@@ -35,3 +35,6 @@ p = subprocess.Popen(["ps","-a"], shell=True, stdout=subprocess.PIPE, stderr=sub
 for line in p.stdout.readlines():
     print line
 retval = p.wait()
+
+import commands
+print commands.getstatusoutput('history')
