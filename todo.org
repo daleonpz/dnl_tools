@@ -6,10 +6,9 @@
 ** Tools [0/2]
  - [ ] shell stats
  - [ ] show in screen "Break time"
- - [ ] 
-** Learning Stuff [0/2]
+** Learning Stuff [0/5]
  - [ ] IntroToCpp - Coursera
  - [ ] Python Web Acess
  - [ ] Python Databases
- - [ ] LinuxJourney.com
- - [ ] Github training
+ - [ ] LinuxJourney.com [[www.linuxjourney.com][link]]
+ - [ ] Github training [[https://services.github.com/training/][link]]
