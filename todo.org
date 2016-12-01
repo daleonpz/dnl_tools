@@ -7,4 +7,9 @@
  - [ ] shell stats
  - [ ] show in screen "Break time"
  - [ ] 
-
+** Learning Stuff [0/2]
+ - [ ] IntroToCpp - Coursera
+ - [ ] Python Web Acess
+ - [ ] Python Databases
+ - [ ] LinuxJourney.com
+ - [ ] Github training
