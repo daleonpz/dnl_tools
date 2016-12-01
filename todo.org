@@ -1,0 +1,10 @@
+* ToDo
+** Blog [0/3]
+ - [ ] Background picture
+ - [ ] Logo
+ - [ ] First post
+** Tools [0/2]
+ - [ ] shell stats
+ - [ ] show in screen "Break time"
+ - [ ] 
+
