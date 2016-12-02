@@ -1,6 +1,6 @@
 * ToDo
-** Blog [0/3]
- - [ ] Background picture
+** Blog [1/3]
+ - [X] Background picture
  - [ ] Logo
  - [ ] First post
 ** Tools [0/2]
