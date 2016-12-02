@@ -10,5 +10,5 @@
  - [ ] IntroToCpp - Coursera
  - [ ] Python Web Acess
  - [ ] Python Databases
- - [ ] LinuxJourney.com [[www.linuxjourney.com][link]]
+ - [ ] LinuxJourney.com [[https://linuxjourney.com][link]]
  - [ ] Github training [[https://services.github.com/training/][link]]
