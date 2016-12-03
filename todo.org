@@ -6,6 +6,7 @@
 ** Tools [0/2]
  - [ ] shell stats
  - [ ] show in screen "Break time"
+ - [ ] script for finding and replacing some text
 ** Learning Stuff [0/5]
  - [ ] IntroToCpp - Coursera
  - [ ] Python Web Acess
