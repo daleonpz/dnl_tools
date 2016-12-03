@@ -7,6 +7,9 @@
  - [ ] shell stats
  - [ ] show in screen "Break time"
  - [ ] script for finding and replacing some text
+** To Read [0/2]
+ - [ ] Jekyll doc, I'm here - Directory structure
+ - [ ] 
 ** Learning Stuff [0/5]
  - [ ] IntroToCpp - Coursera
  - [ ] Python Web Acess
