@@ -6,7 +6,7 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [ ] Logo
  - [ ] First post
 ** Tools [0/3]
- - [ ] shell stats
+ - [X] shell stats
  - [ ] show in screen "Break time"
  - [ ] script for finding and replacing some text
 ** Reading - Documentation [0/2]
