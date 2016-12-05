@@ -1,15 +1,29 @@
 * ToDo
+I am about to finish some of them, other task i dont even start but I will soon.
+
 ** Blog [1/3]
  - [X] Background picture
  - [ ] Logo
  - [ ] First post
-** Tools [0/2]
+** Tools [0/3]
  - [ ] shell stats
  - [ ] show in screen "Break time"
  - [ ] script for finding and replacing some text
-** To Read [0/2]
- - [ ] Jekyll doc, I'm here - Directory structure
+** Reading - Documentation [0/2]
+ - [ ] Jekyll doc [[https://jekyllrb.com/docs/home/][link]]
  - [ ] 
+** Reading - Technology [1/4]
+ - [X] Introduction to Networking - Charles Severance
+ - [ ] The Art of debugging - Norman Matloff
+ - [ ] A Tour of C++ - Bjarne Stroustrup
+ - [ ] C++ How to Program - Paul Deitel
+** Reading - Health [3/4]
+ - [ ] Patrick McKeown - The Oxygen Advantage
+ - [X] Total Knee Health - Martin Koban
+ - [X] Supple Leopard - Kelly Starrett
+ - [X] Convict Conditioning 1 and 2
+** Lessons [/]
+ - 
 ** Learning Stuff [0/5]
  - [ ] IntroToCpp - Coursera
  - [ ] Python Web Acess
