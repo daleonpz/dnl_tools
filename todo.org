@@ -30,5 +30,6 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [ ] Python Web Acess
  - [ ] Python Databases
  - [ ] LinuxJourney.com [[https://linuxjourney.com][link]]
- - [ ] Github training [[https://services.github.com/training/][link]]
+ - [ ] Github for developers [[https://services.github.com/training/][link]]
+ - [ ] Github essentials [[https://services.github.com/training/][link]]
  - [ ] GDB Debugger by Peter Jay Salzman [[http://www.dirac.org/linux/gdb/01-Introduction.php][link]]
