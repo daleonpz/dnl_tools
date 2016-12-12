@@ -1,7 +1,7 @@
 * ToDo
 I am about to finish some of them, other task i dont even start but I will soon.
 
-** Blog [2/4]
+** Blog [3/5]
  - [X] Background picture
  - [X] Logo
  - [X] Custom url
