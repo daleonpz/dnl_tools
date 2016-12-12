@@ -4,7 +4,8 @@ I am about to finish some of them, other task i dont even start but I will soon.
 ** Blog [2/4]
  - [X] Background picture
  - [X] Logo
- - [ ] Custom url
+ - [X] Custom url
+ - [ ] change to https
  - [ ] First post
 ** Tools [0/3]
  - [X] shell stats
