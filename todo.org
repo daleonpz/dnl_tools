@@ -11,8 +11,8 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [X] shell stats
  - [ ] show in screen "Break time"
  - [ ] script for finding and replacing some text
-** Reading - Documentation [0/2]
- - [ ] Jekyll doc [[https://jekyllrb.com/docs/home/][link]]
+** Reading - Documentation [1/2]
+ - [X] Jekyll doc [[https://jekyllrb.com/docs/home/][link]]
  - [ ] 
 ** Reading - Technology [1/4]
  - [X] Introduction to Networking - Charles Severance
