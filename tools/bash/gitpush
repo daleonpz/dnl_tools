@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# to do commit a simple update but I hate write it 
+
+Red='\033[0;31m'
+BGreen='\033[1;32m'      
+Color_Off='\033[0m'     
+printf "${Red}Modified files \n${BGreen}"
+
+git ls-files --modified -z
+
+printf "\n${Color_Off}"
+
+git add *
+git commit -m "minor update"
+git push
