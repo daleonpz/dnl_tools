@@ -1,11 +1,11 @@
 * ToDo
 I am about to finish some of them, other task i dont even start but I will soon.
 
-** Blog [3/5]
+** Blog [4/5]
  - [X] Background picture
  - [X] Logo
  - [X] Custom url
- - [ ] change to https
+ - [X] change to https
  - [ ] First post
 ** Tools [0/3]
  - [X] shell stats
