@@ -1,12 +1,13 @@
 * ToDo
 I am about to finish some of them, other task i dont even start but I will soon.
 
-** Blog [5/5]
+** Blog [5/6]
  - [X] Background picture
  - [X] Logo
  - [X] Custom url
  - [X] change to https
  - [X] First post
+ - [ ] Delete photography
 ** Tools [0/3]
  - [X] shell stats
  - [ ] show in screen "Break time"
