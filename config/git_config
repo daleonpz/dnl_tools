@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+git config --global core.autocrlf input
+git config --global core.editor "vim"
+
+git config --global push.default simple
+
+git config --global alias.co "checkout -b"
+git config --global alias.cm "commit -m"
+git config --global alias.s  "status"
+git config --global alias.ss "status -s"
