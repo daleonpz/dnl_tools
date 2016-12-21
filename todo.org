@@ -32,11 +32,11 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [X] Convict Conditioning 1 and 2
 ** Lessons [/]
  - 
-** Learning Stuff [0/5]
+** Learning Stuff [1/7]
  - [ ] IntroToCpp - Coursera
  - [ ] Python Web Acess
  - [ ] Python Databases
  - [ ] LinuxJourney.com [[https://linuxjourney.com][link]]
- - [ ] Github for developers [[https://services.github.com/training/][link]]
+ - [X] Github for developers [[https://services.github.com/training/][link]]
  - [ ] Github essentials [[https://services.github.com/training/][link]]
  - [ ] GDB Debugger by Peter Jay Salzman [[http://www.dirac.org/linux/gdb/01-Introduction.php][link]]
