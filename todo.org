@@ -8,9 +8,9 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [X] change to https
  - [X] First post
  - [X] Delete photography
-** Videos [1/3]
+** Videos [2/3]
  - [ ] Asia - EU travel
- - [ ] Promo video IM - classes 2017
+ - [X] Promo video IM - classes 2017
  - [X] Jiho Kim Video
 ** Tools [1/4]
  - [X] shell stats
