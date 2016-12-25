@@ -1,5 +1,12 @@
 #!/usr/bin/python2.7
 
+############################
+#  TO DO
+############################
+# - add food list
+# - set time to send mail
+# - read from org-mode file / txt file
+
 import smtplib
 import getpass
 
