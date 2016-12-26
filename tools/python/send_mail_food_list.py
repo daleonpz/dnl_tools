@@ -9,18 +9,32 @@
 
 import smtplib
 import getpass
+import os
+
+from apscheduler.schedulers.background import BackgroundScheduler
+from datetime import datetime, timedelta
+from pytz import timezone
+
+def ask_id():
+    mail = raw_input('gmail user >> ')
+    password = getpass.getpass('password >> ')
+
+    return mail + '@gmail.com', password
 
 class Gmail_api(object):
-    def __init__(self, email, password):
-        self.email = email + "@gmail.com"
-        self.password = password
+    def __init__(self):
+        self.email, self.password = ask_id()
         self.server = 'smtp.gmail.com'
         self.port = 587
         
         session = smtplib.SMTP(self.server, self.port)
         session.ehlo() #Identify yourself to the server. 
         session.starttls() # Transport layer security
-        session.login(self.email, self.password)
+        try: 
+            session.login(self.email, self.password)
+        except smtplib.SMTPAuthenticationError:
+            print 'Invalid user/password ... try again'
+            self.email, self.password = ask_id()
 
         self.session = session
 
@@ -40,10 +54,23 @@ class Gmail_api(object):
                 headers + "\r\n\r\n" + body
                 )
 
-mail = raw_input('gmail user >> ')
-password = getpass.getpass('password >> ')
-receiver = raw_input('To >> ')
 
-gm = Gmail_api(mail, password)
-gm.send_message(receiver, 'To buy', 'This is the body')
+gm = Gmail_api()
+receiver = raw_input('To >> ')
+scheduler = BackgroundScheduler()
+fmt = '%Y-%m-%d %H:%M:%S %Z%z'
+
+scheduler.add_job( 
+        gm.send_message,
+        'date',
+        run_date='2016-12-25 21:08:05',
+        #run_date = datetime.now().strftime(fmt),
+        #run_date = (datetime.now() + timedelta(minutes=0.5)).strftime(fmt) ,
+        args=[receiver, 'To buy', 'Body'] )
+scheduler.start()
+#scheduler.remove('job')
+scheduler.shutdown()
+#os._exit(1)
+
+#gm.send_message(receiver, 'To buy', 'This is the body')
 
