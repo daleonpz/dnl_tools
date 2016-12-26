@@ -63,13 +63,21 @@ fmt = '%Y-%m-%d %H:%M:%S %Z%z'
 scheduler.add_job( 
         gm.send_message,
         'date',
-        run_date='2016-12-25 21:08:05',
-        #run_date = datetime.now().strftime(fmt),
-        #run_date = (datetime.now() + timedelta(minutes=0.5)).strftime(fmt) ,
+#        run_date='2016-12-25 21:08:05',
+       # run_date = datetime.now().strftime(fmt),
+        run_date = (datetime.now() + timedelta(minutes=0.5)).strftime(fmt) ,
         args=[receiver, 'To buy', 'Body'] )
 scheduler.start()
 #scheduler.remove('job')
-scheduler.shutdown()
+
+import time
+try:
+    # This is here to simulate application activity (which keeps the main thread alive).
+    # need to finish the thread after accomplish the job
+    while True:
+            time.sleep(2)
+except (KeyboardInterrupt, SystemExit):
+    scheduler.shutdown()
 #os._exit(1)
 
 #gm.send_message(receiver, 'To buy', 'This is the body')
