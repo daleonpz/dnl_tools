@@ -4,9 +4,9 @@
 #  TO DO
 ############################
 # - add food list
-# - set time to send mail
 # - read from org-mode file / txt file
-
+# - create a method for get the data ( receiver, food and time)
+# - modify send message method
 import smtplib
 import getpass
 import os
@@ -54,7 +54,6 @@ class Gmail_api(object):
                 headers + "\r\n\r\n" + body
                 )
 
-
 gm = Gmail_api()
 receiver = raw_input('To >> ')
 scheduler = BackgroundScheduler()
@@ -65,7 +64,7 @@ scheduler.add_job(
         'date',
 #        run_date='2016-12-25 21:08:05',
        # run_date = datetime.now().strftime(fmt),
-        run_date = (datetime.now() + timedelta(minutes=0.5)).strftime(fmt) ,
+        run_date = (datetime.now() + timedelta(minutes=0.5))) ,
         args=[receiver, 'To buy', 'Body'] )
 scheduler.start()
 #scheduler.remove('job')
