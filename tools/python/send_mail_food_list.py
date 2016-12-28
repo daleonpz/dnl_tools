@@ -6,13 +6,14 @@
 # - add food list
 # - read from org-mode file / txt file
 # - create a method for get the data ( receiver, food and time)
-# - modify send message method
 import smtplib
 import getpass
 import os
+import re
+import time #this will be deleted
 
 from apscheduler.schedulers.background import BackgroundScheduler
-from datetime import datetime, timedelta
+from datetime import datetime 
 from pytz import timezone
 
 def ask_id():
@@ -38,11 +39,11 @@ class Gmail_api(object):
 
         self.session = session
 
-    def send_message(self, receiver, subject, body):
+    def send_message(self):
         headers = [
                 "From: " + self.email,
-                "Subject: " + subject,
-                "To: " + receiver,
+                "Subject: Shopping List" ,
+                "To: " + self.receiver,
                 "Content-Type: text/html"
                 ]
         headers = "\r\n".join(headers)
@@ -50,34 +51,46 @@ class Gmail_api(object):
         # sendmail( sender, receiver, message)
         self.session.sendmail(
                 self.email,
-                receiver,
-                headers + "\r\n\r\n" + body
+                self.receiver,
+                headers + "\r\n\r\n" + self.body
                 )
 
+    def get_data(self):
+        self.receiver = raw_input('To >> ')
+        self.body = raw_input('Food List >> ')
+
+        # The input should be something like this 18:45
+        timer = raw_input('Set alarm, 24Hrs format >> ')
+        timer = map(int,re.split(":",timer))
+        now = datetime.now()
+        self.alarm = now.replace(hour=timer[0], minute=timer[1])
+        print self.alarm
+
+    def run_scheduler(self):
+        scheduler = BackgroundScheduler()
+
+        scheduler.add_job( 
+                self.send_message,
+                'date',
+                run_date = self.alarm )
+        
+        scheduler.start()
+
+        try:
+        # This is here to simulate application activity (which keeps the main thread alive).
+        # need to finish the thread after accomplish the job
+            while True:
+                time.sleep(2)
+        except (KeyboardInterrupt, SystemExit):
+                scheduler.shutdown()
+#        
+
+
+######################################
+#      M A I N
+######################################
+
 gm = Gmail_api()
-receiver = raw_input('To >> ')
-scheduler = BackgroundScheduler()
-fmt = '%Y-%m-%d %H:%M:%S %Z%z'
-
-scheduler.add_job( 
-        gm.send_message,
-        'date',
-#        run_date='2016-12-25 21:08:05',
-       # run_date = datetime.now().strftime(fmt),
-        run_date = (datetime.now() + timedelta(minutes=0.5))) ,
-        args=[receiver, 'To buy', 'Body'] )
-scheduler.start()
-#scheduler.remove('job')
-
-import time
-try:
-    # This is here to simulate application activity (which keeps the main thread alive).
-    # need to finish the thread after accomplish the job
-    while True:
-            time.sleep(2)
-except (KeyboardInterrupt, SystemExit):
-    scheduler.shutdown()
-#os._exit(1)
-
-#gm.send_message(receiver, 'To buy', 'This is the body')
+gm.get_data()
+gm.run_scheduler()
 
