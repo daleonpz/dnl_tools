@@ -4,17 +4,18 @@
 #  TO DO
 ############################
 # - read from org-mode file / txt file
-# - shutdown the program 
 import smtplib
 import getpass
 import os
 import re
-import time #this will be deleted
 
 from apscheduler.schedulers.background import BackgroundScheduler
-from datetime import datetime 
+from datetime import datetime, timedelta
 from pytz import timezone
 
+###################################
+#   F u n c t i o n s
+###################################
 def request_id():
     mail = raw_input('gmail user >> ')
     password = getpass.getpass('password >> ')
@@ -31,6 +32,10 @@ def request_list():
         item = raw_input('>> ')
 
     return my_list
+
+##################################
+#  C l a s s e s  D e f .
+##################################
 
 class Gmail_api(object):
     def __init__(self):
@@ -86,16 +91,12 @@ class Gmail_api(object):
                 run_date = self.alarm )
         
         scheduler.start()
+        
+        # needed to keep the thread alive, need to be improved somehow
+        while ( (self.alarm + timedelta(minutes=5)) > datetime.now() ):
+            pass
 
-        try:
-        # This is here to simulate application activity (which keeps the main thread alive).
-        # need to finish the thread after accomplish the job
-            while True:
-                time.sleep(2)
-        except (KeyboardInterrupt, SystemExit):
-                scheduler.shutdown()
-#        
-
+        scheduler.shutdown()
 
 ######################################
 #      M A I N
