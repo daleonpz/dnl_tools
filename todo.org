@@ -12,11 +12,12 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [ ] Asia - EU travel
  - [X] Promo video IM - classes 2017
  - [X] Jiho Kim Video
-** Tools [1/4]
+** Tools [2/4]
+   SCHEDULED: <2016-12-29 Thu>
  - [X] shell stats
  - [ ] show in screen "Break time"
  - [ ] script for finding and replacing some text
- - [ ] send mail with food list
+ - [X] send mail with food list
 ** Reading - Documentation [1/2]
  - [X] Jekyll doc [[https://jekyllrb.com/docs/home/][link]]
  - [ ] 
