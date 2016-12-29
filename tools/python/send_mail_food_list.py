@@ -3,9 +3,8 @@
 ############################
 #  TO DO
 ############################
-# - add food list
 # - read from org-mode file / txt file
-# - create a method for get the data ( receiver, food and time)
+# - shutdown the program 
 import smtplib
 import getpass
 import os
@@ -16,15 +15,26 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime 
 from pytz import timezone
 
-def ask_id():
+def request_id():
     mail = raw_input('gmail user >> ')
     password = getpass.getpass('password >> ')
 
     return mail + '@gmail.com', password
 
+def request_list():
+    print 'Add items to your list:'
+    print "write 'done' when you list is complete:"
+    item = raw_input('>> ')
+    my_list = ''
+    while (item != 'done'):
+        my_list += (' - ' + item + '\n')
+        item = raw_input('>> ')
+
+    return my_list
+
 class Gmail_api(object):
     def __init__(self):
-        self.email, self.password = ask_id()
+        self.email, self.password = request_id()
         self.server = 'smtp.gmail.com'
         self.port = 587
         
@@ -35,7 +45,7 @@ class Gmail_api(object):
             session.login(self.email, self.password)
         except smtplib.SMTPAuthenticationError:
             print 'Invalid user/password ... try again'
-            self.email, self.password = ask_id()
+            self.email, self.password = request_id()
 
         self.session = session
 
@@ -44,7 +54,7 @@ class Gmail_api(object):
                 "From: " + self.email,
                 "Subject: Shopping List" ,
                 "To: " + self.receiver,
-                "Content-Type: text/html"
+                "Content-Type: text/plain"
                 ]
         headers = "\r\n".join(headers)
 
@@ -57,7 +67,8 @@ class Gmail_api(object):
 
     def get_data(self):
         self.receiver = raw_input('To >> ')
-        self.body = raw_input('Food List >> ')
+        #self.body = raw_input('Food List >> ')
+        self.body = request_list()
 
         # The input should be something like this 18:45
         timer = raw_input('Set alarm, 24Hrs format >> ')
@@ -93,4 +104,3 @@ class Gmail_api(object):
 gm = Gmail_api()
 gm.get_data()
 gm.run_scheduler()
-
