@@ -12,7 +12,7 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [ ] Asia - EU travel
  - [X] Promo video IM - classes 2017
  - [X] Jiho Kim Video
-** Tools [2/4]
+** Tools [2/6]
  - [X] shell stats
  - [ ] show in screen "Break time"
  - [ ] review the tasks I have here, input: list headers, list undone/done
