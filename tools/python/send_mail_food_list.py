@@ -7,8 +7,9 @@
 import smtplib
 import getpass
 import re
-
 import time, sched
+
+from datetime import timedelta, datetime
 
 ###################################
 #   F u n c t i o n s
@@ -21,7 +22,7 @@ def request_id():
 
 def request_list():
     print 'Add items to your list:'
-    print "write 'done' when you list is complete:"
+    print "write 'done' when your list is complete:"
     item = raw_input('>> ')
     my_list = ''
     while (item != 'done'):
@@ -81,23 +82,23 @@ class Gmail_api(object):
                 )
         session.quit()
 
+    def set_alarm(self):
+        now = datetime.now()
+         # The input should be something like this 18:45
+        timer = raw_input('Set alarm, 24Hrs format >> ')
+        timer = map(int,re.split(":",timer))
+
+        delta = (timer[0] - now.hour )*3600 + (timer[1] - now.minute)*60 
+
+        s = sched.scheduler(time.time, time.sleep)
+        s.enter(delta, 1, self.send_message,())
+        s.run()
+
 ######################################
 #      M A I N
 ######################################
 
 gm = Gmail_api()
 gm.get_data()
-#gm.send_message() 
+gm.set_alarm()
 
-from datetime import timedelta, datetime
-
-now = datetime.now()
- # The input should be something like this 18:45
-timer = raw_input('Set alarm, 24Hrs format >> ')
-timer = map(int,re.split(":",timer))
-
-delta = (timer[0] - now.hour )*3600 + (timer[1] - now.minute)*60 
-
-s = sched.scheduler(time.time, time.sleep)
-s.enter(delta, 1, gm.send_message,())
-s.run()
