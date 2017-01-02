@@ -6,12 +6,9 @@
 # - read from org-mode file / txt file
 import smtplib
 import getpass
-import os
 import re
 
-from apscheduler.schedulers.background import BackgroundScheduler
-from datetime import datetime, timedelta
-from pytz import timezone
+import time, sched
 
 ###################################
 #   F u n c t i o n s
@@ -33,6 +30,13 @@ def request_list():
 
     return my_list
 
+def open_session(server, port):
+        session = smtplib.SMTP(server, port)
+        session.ehlo() #Identify yourself to the server. 
+        session.starttls() # Transport layer security
+        
+        return session
+
 ##################################
 #  C l a s s e s  D e f .
 ##################################
@@ -43,18 +47,24 @@ class Gmail_api(object):
         self.server = 'smtp.gmail.com'
         self.port = 587
         
-        session = smtplib.SMTP(self.server, self.port)
-        session.ehlo() #Identify yourself to the server. 
-        session.starttls() # Transport layer security
+        session = open_session(self.server, self.port)
+
         try: 
             session.login(self.email, self.password)
         except smtplib.SMTPAuthenticationError:
             print 'Invalid user/password ... try again'
             self.email, self.password = request_id()
 
-        self.session = session
+        session.quit()
+
+    def get_data(self):
+        self.receiver = raw_input('To >> ')
+        self.body = request_list()
 
     def send_message(self):
+        session = open_session(self.server, self.port)
+        session.login(self.email, self.password)
+        
         headers = [
                 "From: " + self.email,
                 "Subject: Shopping List" ,
@@ -64,39 +74,12 @@ class Gmail_api(object):
         headers = "\r\n".join(headers)
 
         # sendmail( sender, receiver, message)
-        self.session.sendmail(
+        session.sendmail(
                 self.email,
                 self.receiver,
                 headers + "\r\n\r\n" + self.body
                 )
-
-    def get_data(self):
-        self.receiver = raw_input('To >> ')
-        #self.body = raw_input('Food List >> ')
-        self.body = request_list()
-
-        # The input should be something like this 18:45
-        timer = raw_input('Set alarm, 24Hrs format >> ')
-        timer = map(int,re.split(":",timer))
-        now = datetime.now()
-        self.alarm = now.replace(hour=timer[0], minute=timer[1])
-        print self.alarm
-
-    def run_scheduler(self):
-        scheduler = BackgroundScheduler()
-
-        scheduler.add_job( 
-                self.send_message,
-                'date',
-                run_date = self.alarm )
-        
-        scheduler.start()
-        
-        # needed to keep the thread alive, need to be improved somehow
-        while ( (self.alarm + timedelta(minutes=5)) > datetime.now() ):
-            pass
-
-        scheduler.shutdown()
+        session.quit()
 
 ######################################
 #      M A I N
@@ -104,4 +87,17 @@ class Gmail_api(object):
 
 gm = Gmail_api()
 gm.get_data()
-gm.run_scheduler()
+#gm.send_message() 
+
+from datetime import timedelta, datetime
+
+now = datetime.now()
+ # The input should be something like this 18:45
+timer = raw_input('Set alarm, 24Hrs format >> ')
+timer = map(int,re.split(":",timer))
+
+delta = (timer[0] - now.hour )*3600 + (timer[1] - now.minute)*60 
+
+s = sched.scheduler(time.time, time.sleep)
+s.enter(delta, 1, gm.send_message,())
+s.run()
