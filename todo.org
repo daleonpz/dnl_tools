@@ -13,10 +13,11 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [X] Promo video IM - classes 2017
  - [X] Jiho Kim Video
 ** Tools [2/4]
-   SCHEDULED: <2016-12-29 Thu>
  - [X] shell stats
  - [ ] show in screen "Break time"
- - [ ] script for finding and replacing some text
+ - [ ] review the tasks I have here, input: list headers, list undone/done
+ - [ ] add jobs by command line to this line 
+ - [ ] search in my home for a specific object, "where is my dog?"
  - [X] send mail with food list
 ** Reading - Documentation [1/2]
  - [X] Jekyll doc [[https://jekyllrb.com/docs/home/][link]]
@@ -30,9 +31,7 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [ ] Patrick McKeown - The Oxygen Advantage
  - [X] Total Knee Health - Martin Koban
  - [X] Supple Leopard - Kelly Starrett
- - [X] Convict Conditioning 1 and 2
-** Lessons [/]
- - 
+ - [X] Convict Conditioning 1 and 2 - 
 ** Learning Stuff [1/7]
  - [ ] IntroToCpp - Coursera
  - [ ] Python Web Acess
