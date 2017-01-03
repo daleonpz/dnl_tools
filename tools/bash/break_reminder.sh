@@ -9,8 +9,10 @@ function printMessage (){
 	cols=$( tput cols )
 	rows=$( tput lines )
 
-	message="Break timer: 05:00"
+	#message="Break timer: 05:00"
+	secs=$1
 
+	message=$(printf "Break Time: %02d:%02d" $(( (secs/60)%60)) $((secs%60)) )
 	input_length=${#message}
 
 	half_input_length=$(( $input_length / 2 ))
@@ -34,7 +36,8 @@ function countdown(){
         while [ $secs -gt 0 ]
 	do
 		sleep 1 &
-		printf "\r%02d:%02d" $(( (secs/60)%60)) $((secs%60))
+		#printf "Break Time: \r%02d:%02d" $(( (secs/60)%60)) $((secs%60))
+		printMessage $secs
 		secs=$(( $secs - 1 ))
 		wait
 	done
