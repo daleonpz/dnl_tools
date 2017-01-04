@@ -1,10 +1,5 @@
 #!/bin/bash
 
-function myjob (){
-	ps
-	sleep 5
-}
-
 function printMessage (){
 	cols=$( tput cols )
 	rows=$( tput lines )
@@ -32,7 +27,8 @@ function printMessage (){
 function countdown(){
 	IFS=:
 	set -- $*
-	secs=$(( ${1#0} * 60 + ${2#0} ))
+	#secs=$(( ${1#0} * 60 + ${2#0} ))
+	secs=600 # 10minutes
         while [ $secs -gt 0 ]
 	do
 		sleep 1 &
@@ -47,4 +43,4 @@ function countdown(){
 
 "$@"
 
-#xfce4-terminal -x myjob
+#xfce4-terminal --fullscreen -x 
