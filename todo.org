@@ -12,13 +12,14 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [ ] Asia - EU travel
  - [X] Promo video IM - classes 2017
  - [X] Jiho Kim Video
-** Tools [3/6]
+** Tools [4/7]
  - [X] shell stats
  - [X] show in screen "Break time"
+ - [X] send mail with food list
+ - [X] create python template divided with sections 
  - [ ] review the tasks I have here, input: list headers, list undone/done
  - [ ] add jobs by command line to this line 
  - [ ] search in my home for a specific object, "where is my dog?"
- - [X] send mail with food list
 ** Reading - Documentation [1/2]
  - [X] Jekyll doc [[https://jekyllrb.com/docs/home/][link]]
  - [ ] 
