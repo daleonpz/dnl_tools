@@ -2,6 +2,12 @@
 
 from sys import argv
 
+d = """
+###############################
+#  T O   D O
+###############################
+"""
+
 i = """
 ################################
 #   I M P O R T S
@@ -30,6 +36,6 @@ script, filename = argv
 
 out_file = open(filename, 'w')
 out_file.write("#!/usr/bin/python2.7")
-out_file.write(i + f + c + m)
+out_file.write(d + i + f + c + m)
 out_file.close()
 
