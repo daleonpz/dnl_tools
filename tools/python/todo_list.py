@@ -1,4 +1,12 @@
 #!/usr/bin/python2.7
+
+###############################
+#  T O   D O
+###############################
+# - add new jobs
+# - mark jobs as done
+# - query jobs from headers
+
 ################################
 #   I M P O R T S
 ################################
@@ -23,6 +31,11 @@ def select_func(key, cls):
             'headers'   : cls.headers(),
             'test'      : cls.test()
             }.get(key, list_func(todo) )
+
+def usage():
+    print "Valid inputs:"
+    print "-f, --function:\n\t" + list_func(todo)
+
 
 ################################
 #   C L A S S E S 
@@ -53,8 +66,7 @@ def main():
         sys.exit(2)
     for opt, arg in opts:
         if opt in ('-h', '--help'):
-            print "Valid inputs:"
-            print "-f, --function:\n\t" + list_func(todo)
+            usage()
             sys.exit()
         elif opt in ( '-f', '--function'):
             print select_func(arg, dolist)
@@ -64,10 +76,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-#script, func = argv
-#dolist = todo()
-
-#print select_func(func, dolist)
-
