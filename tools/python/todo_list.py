@@ -5,8 +5,6 @@
 ###############################
 # - add new jobs
 # - mark jobs as done
-# - number of jobs done/undone
-# - query jobs from headers
 
 ################################
 #   I M P O R T S
@@ -35,9 +33,9 @@ def select_func(key, cls):
 
 def usage():
     print "Usage:"
-    print "\t-h, --help\t\t: display help"
-    print "\t-H, --headers\t\t: display available headers in your todolist.org" 
-    print "\t-j, --jobs [header]\t: retrieve jobs from a specific header"
+    print "\t-h, --help\t\t\t: display help"
+    print "\t-H, --headers\t\t\t: display available headers in your todolist.org" 
+    print "\t-j, --jobs [header]\t\t: retrieve jobs from a specific header"
     print "\t-c, --completion [header]\t: job completion"
 
 
@@ -66,8 +64,11 @@ class todo(object):
  
 
     def job_retrieval(self, head):
-        jobs = re.findall("\*\* " + head + " \[.+\]" , self.string)
-        print jobs
+        pattern = re.compile("\*\* "+ head + " (.+?)\*\*", re.DOTALL)
+        jobs = re.findall(pattern, self.string)
+        jobs = re.split( "\n", jobs[0] )[1:-1]
+        #jobs = [re.sub(" - \[.\] ","",x) for x in jobs] 
+        print "    " + "\n    ".join(jobs)
 
 
 ################################
