@@ -6,7 +6,6 @@
 # - add new jobs
 # - mark jobs as done
 # - query jobs from headers
-# - format headers
 
 ################################
 #   I M P O R T S
@@ -51,7 +50,8 @@ class todo(object):
 
     def headers(self):
         # need to delete the last whitespace
-        print re.findall("\*\* ([A-Za-z\s-]+)", self.string)
+        head = re.findall("\*\* ([A-Za-z\s-]+)", self.string)
+        print "    "+"\n    ".join(head)
 
     def job_retrieval(self, arg):
         print arg
