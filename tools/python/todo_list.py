@@ -5,6 +5,7 @@
 ###############################
 # - add new jobs
 # - mark jobs as done
+# - number of jobs done/undone
 # - query jobs from headers
 
 ################################
@@ -37,6 +38,7 @@ def usage():
     print "\t-h, --help\t\t: display help"
     print "\t-H, --headers\t\t: display available headers in your todolist.org" 
     print "\t-j, --jobs [header]\t: retrieve jobs from a specific header"
+    print "\t-c, --completion [header]\t: job completion"
 
 
 ################################
@@ -53,8 +55,19 @@ class todo(object):
         head = re.findall("\*\* ([A-Za-z\s-]+)", self.string)
         print "    "+"\n    ".join(head)
 
-    def job_retrieval(self, arg):
-        print arg
+    def completion_percentage(self, head):
+        jobs = re.findall("\*\* " + head + " \[(.+)\]" , self.string)
+        jobs = re.split("/", jobs[0] )  
+        print "Completion status:"
+        print "     %s of %s (%.2f %%)" % (
+                jobs[0],
+                jobs[1],
+                float(jobs[0]) /  float(jobs[1]) * 100.0)
+ 
+
+    def job_retrieval(self, head):
+        jobs = re.findall("\*\* " + head + " \[.+\]" , self.string)
+        print jobs
 
 
 ################################
@@ -63,7 +76,7 @@ class todo(object):
 def main():
     dolist = todo()
     try:
-        opts, args = getopt.getopt(sys.argv[1:] , "hHj:", ["jobs="]  )
+        opts, args = getopt.getopt(sys.argv[1:] , "hHj:c:", ["jobs=","completion="]  )
     except getopt.GetoptError:
         usage()
         sys.exit(2)
@@ -78,6 +91,8 @@ def main():
             dolist.headers()
         elif opt in ( '-j', '--jobs'):
             dolist.job_retrieval(arg)
+        elif opt in ( '-c', '--completion'):
+            dolist.completion_percentage(arg)
         else:
             assert False, "unhandled option"
 
