@@ -18,11 +18,9 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [X] send mail with food list
  - [X] create python template divided with sections 
  - [X] review the tasks I have here, input: list headers, list undone/done
- - [ ] add jobs by command line to this line 
+ - [ ] add jobs by command line to this file 
+ - [ ] create innermovement website
  - [ ] search in my home for a specific object, "where is my dog?"
-** Reading - Documentation [1/2]
- - [X] Jekyll doc [[https://jekyllrb.com/docs/home/][link]]
- - [ ] 
 ** Reading - Technology [1/4]
  - [X] Introduction to Networking - Charles Severance
  - [ ] The Art of debugging - Norman Matloff
