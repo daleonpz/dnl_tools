@@ -1,24 +1,29 @@
 * ToDo
 I am about to finish some of them, other task i dont even start but I will soon.
 
-** Blog [6/6]
+** Blog [8/8]
  - [X] Background picture
  - [X] Logo
  - [X] Custom url
  - [X] change to https
  - [X] First post
  - [X] Delete photography
-** Videos [3/3]
+ - [X] Finish draft
+ - [X] New Post
+** Videos [3/5]
  - [X] Asia - EU travel
  - [X] Promo video IM - classes 2017
  - [X] Jiho Kim Video
-** Tools [5/8]
+ - [ ] Early morning trainings
+ - [ ] Letter to me
+** Tools [5/9]
  - [X] shell stats
  - [X] show in screen "Break time"
  - [X] send mail with food list
  - [X] create python template divided with sections 
  - [X] review the tasks I have here, input: list headers, list undone/done
  - [ ] add jobs by command line to this file 
+ - [ ] mark as undone/done jobs
  - [ ] create innermovement website
  - [ ] search in my home for a specific object, "where is my dog?"
 ** Reading - Technology [1/7]
