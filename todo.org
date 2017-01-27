@@ -10,11 +10,11 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [X] Delete photography
  - [X] Finish draft
  - [X] New Post
-** Videos [3/5]
+** Videos [4/5]
  - [X] Asia - EU travel
  - [X] Promo video IM - classes 2017
  - [X] Jiho Kim Video
- - [ ] Early morning trainings
+ - [X] Early morning trainings
  - [ ] Letter to me
 ** Tools [5/9]
  - [X] shell stats
@@ -26,6 +26,8 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [ ] mark as undone/done jobs
  - [ ] create innermovement website
  - [ ] search in my home for a specific object, "where is my dog?"
+** Hardware [0/1]
+ - [ ] adapt a programmable motor to a tripod to be used for pan 
 ** Reading - Technology [1/7]
  - [X] Introduction to Networking - Charles Severance
  - [ ] The Art of debugging - Norman Matloff
