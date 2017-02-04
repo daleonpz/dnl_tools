@@ -26,6 +26,7 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [ ] mark as undone/done jobs
  - [ ] create innermovement website
  - [ ] search in my home for a specific object, "where is my dog?"
+ - [ ] quick timer
 ** Hardware [0/1]
  - [ ] adapt a programmable motor to a tripod to be used for pan 
 ** Reading - Technology [1/7]
