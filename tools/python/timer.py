@@ -2,6 +2,11 @@
 ###############################
 #  T O   D O
 ###############################
+# - close automatically
+# - larger fonts
+# - sound as output
+# - add titles
+# - multiset timer (future)
 
 ################################
 #   I M P O R T S
