@@ -16,5 +16,5 @@
 #	5) sudo systemctl start cronie.service
 
 # DIR should be change by file full path 
-DIR=/home/dnl/Documents/MyStuff/dnl_tools/tools/bash
+DIR=/home/dnl/Documents/gitStuff/dnl_tools/tools/bash
 xfce4-terminal --fullscreen -x ${DIR}/break_reminder.sh countdown
