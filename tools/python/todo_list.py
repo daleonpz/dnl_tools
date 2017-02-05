@@ -44,7 +44,7 @@ def usage():
 ################################
 class todo(object):
     def __init__(self):
-        infile = open("/home/dnl/Documents/MyStuff/dnl_tools/todo.org")
+        infile = open("/home/dnl/Documents/gitStuff/dnl_tools/todo.org")
         self.string = infile.read()
         infile.close()
 
