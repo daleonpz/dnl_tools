@@ -16,7 +16,7 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [X] Jiho Kim Video
  - [X] Early morning trainings
  - [ ] Letter to me
-** Tools [5/9]
+** Tools [6/10]
  - [X] shell stats
  - [X] show in screen "Break time"
  - [X] send mail with food list
@@ -26,7 +26,7 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [ ] mark as undone/done jobs
  - [ ] create innermovement website
  - [ ] search in my home for a specific object, "where is my dog?"
- - [ ] quick timer
+ - [X] quick timer
 ** Hardware [0/1]
  - [ ] adapt a programmable motor to a tripod to be used for pan 
 ** Reading - Technology [1/7]
