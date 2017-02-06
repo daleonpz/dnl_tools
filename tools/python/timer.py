@@ -99,5 +99,5 @@ def main():
     root.destroy()
 
 if __name__ == "__main__":
-    main2()
+    main()
 
