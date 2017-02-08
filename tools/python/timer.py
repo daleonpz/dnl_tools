@@ -36,7 +36,7 @@ class Countdown(Label):
             Label.__init__(self, parent, width=5, text=t, font=('Helvetica','20'))
             self._job_id = None
             pygame.init()
-            pygame.mixer.music.load("timer.wav")
+            pygame.mixer.music.load("/home/dnl/Documents/gitStuff/dnl_tools/tools/python/timer.wav")
 
         def tick(self):
             self.value -= 1
