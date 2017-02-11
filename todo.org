@@ -29,9 +29,8 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [X] quick timer
 ** Hardware [0/1]
  - [ ] adapt a programmable motor to a tripod to be used for pan 
-** Reading - Technology [1/7]
+** Reading - Technology [1/6]
  - [X] Introduction to Networking - Charles Severance
- - [ ] The Art of debugging - Norman Matloff
  - [ ] A Tour of C++ - Bjarne Stroustrup
  - [ ] C++ How to Program - Paul Deitel
  - [ ] Computer Systems - Randal Bryant
@@ -42,12 +41,14 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [X] Total Knee Health - Martin Koban
  - [X] Supple Leopard - Kelly Starrett
  - [X] Convict Conditioning 1 and 2  
-** Learning Stuff [1/7]
+** Learning Stuff [1/9]
  - [ ] IntroToCpp - Coursera
  - [ ] Python Web Acess
  - [ ] Python Databases
  - [ ] LinuxJourney.com [[https://linuxjourney.com][link]]
  - [X] Github for developers [[https://services.github.com/training/][link]]
  - [ ] Github essentials [[https://services.github.com/training/][link]]
+  - [ ] Guide to Faster, Less Frustrating Debugging by Norman Mattloff [[http://heather.cs.ucdavis.edu/~matloff/UnixAndC/CLanguage/Debug.html][link]]
  - [ ] GDB Debugger by Peter Jay Salzman [[http://www.dirac.org/linux/gdb/01-Introduction.php][link]]
  - [ ] Valgrind tutorial CS107 [[https://web.stanford.edu/class/cs107/guide_valgrind.html][link]]
+
