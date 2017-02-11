@@ -48,7 +48,7 @@ I am about to finish some of them, other task i dont even start but I will soon.
  - [ ] LinuxJourney.com [[https://linuxjourney.com][link]]
  - [X] Github for developers [[https://services.github.com/training/][link]]
  - [ ] Github essentials [[https://services.github.com/training/][link]]
-  - [ ] Guide to Faster, Less Frustrating Debugging by Norman Mattloff [[http://heather.cs.ucdavis.edu/~matloff/UnixAndC/CLanguage/Debug.html][link]]
+ - [ ] Guide to Faster, Less Frustrating Debugging by Norman Mattloff [[http://heather.cs.ucdavis.edu/~matloff/UnixAndC/CLanguage/Debug.html][link]]
  - [ ] GDB Debugger by Peter Jay Salzman [[http://www.dirac.org/linux/gdb/01-Introduction.php][link]]
  - [ ] Valgrind tutorial CS107 [[https://web.stanford.edu/class/cs107/guide_valgrind.html][link]]
 
