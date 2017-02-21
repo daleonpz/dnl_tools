@@ -25,7 +25,7 @@ printf "${Color_Off}\n"
 git add $m 
 git add $o
 
-git commit -m  "update files" 
+git commit -m  "update files" &> /dev/null 
 
 echo "-----------------------"
 echo "     Add, Done!"
@@ -33,7 +33,7 @@ echo "-----------------------"
 
 
 git rm  $d  &> /dev/null
-git commit -m "deleted files"
+git commit -m "deleted files" &> /dev/null 
 
 echo "-----------------------"
 echo "     Delete, Done!"
