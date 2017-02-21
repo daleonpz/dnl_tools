@@ -18,17 +18,17 @@ printf "${Red}New Files \n${BGreen}"
 echo $o
 printf "${Color_Off}"
 
+printf "${Red}Deleted Files\n${BGreen}"
+echo $d
+printf "${Color_Off}\n"
+
+
 git add $m 
 git add $o
 
 git commit -m "update files"
 
 printf "adding Done!"
-
-printf "${Red}Deleted Files\n${BGreen}"
-echo $d
-printf "${Color_Off}"
-
 git rm  $d
 git commit -m "deleted files"
 git push
