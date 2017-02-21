@@ -28,10 +28,15 @@ git add $o
 git commit -m "update files"
 
 echo "-----------------------"
-echo "adding Done!"
+echo "     Add, Done!"
 echo "-----------------------"
 
 
 git rm  $d
 git commit -m "deleted files"
+
+echo "-----------------------"
+echo "     Delete, Done!"
+echo "-----------------------"
+
 git push
