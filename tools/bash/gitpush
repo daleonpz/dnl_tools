@@ -32,7 +32,7 @@ echo "     Add, Done!"
 echo "-----------------------"
 
 
-git rm  $d  > /dev/null
+git rm  $d  &> /dev/null
 git commit -m "deleted files"
 
 echo "-----------------------"
