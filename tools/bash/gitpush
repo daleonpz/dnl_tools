@@ -22,13 +22,16 @@ printf "${Red}Deleted Files\n${BGreen}"
 echo $d
 printf "${Color_Off}\n"
 
-
 git add $m 
 git add $o
 
 git commit -m "update files"
 
-printf "adding Done!"
+echo "-----------------------"
+echo "adding Done!"
+echo "-----------------------"
+
+
 git rm  $d
 git commit -m "deleted files"
 git push
