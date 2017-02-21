@@ -5,10 +5,30 @@
 Red='\033[0;31m'
 BGreen='\033[1;32m'      
 Color_Off='\033[0m'     
-printf "${Red}Modified files \n${BGreen}"
-git ls-files --o --m
-printf "\n${Color_Off}"
 
-git add *
-git commit -m "minor update"
+m=$(git ls-files -m)
+o=$(git ls-files -o)
+d=$(git ls-files -d)
+
+printf "${Red}Modified files \n${BGreen}"
+echo $m
+printf "${Color_Off}"
+
+printf "${Red}New Files \n${BGreen}"
+echo $o
+printf "${Color_Off}"
+
+git add $m 
+git add $o
+
+git commit -m "update files"
+
+printf "adding Done!"
+
+printf "${Red}Deleted Files\n${BGreen}"
+echo $d
+printf "${Color_Off}"
+
+git rm -r  $d
+git commit -m "deleted files"
 git push
