@@ -25,14 +25,14 @@ printf "${Color_Off}\n"
 git add $m 
 git add $o
 
-git commit -m "update files"
+git commit -m  "update files" 
 
 echo "-----------------------"
 echo "     Add, Done!"
 echo "-----------------------"
 
 
-git rm  $d
+git rm  $d  > /dev/null
 git commit -m "deleted files"
 
 echo "-----------------------"
