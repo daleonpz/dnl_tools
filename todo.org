@@ -33,7 +33,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] Introduction to Networking - Charles Severance
  - [ ] A Tour of C++ - Bjarne Stroustrup
  - [ ] C++ How to Program - Paul Deitel
- - [ ] Computer Systems - Randal Bryant
+ - [X] Computer Systems - Randal Bryant
  - [ ] The C programming language - Brian Kernighan
  - [ ] Beginning Linux Programming -Matthew and Stones
 ** Reading - Health [3/4]
