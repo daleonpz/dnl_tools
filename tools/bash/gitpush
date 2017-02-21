@@ -29,6 +29,6 @@ printf "${Red}Deleted Files\n${BGreen}"
 echo $d
 printf "${Color_Off}"
 
-git rm -r  $d
+git rm  $d
 git commit -m "deleted files"
 git push
