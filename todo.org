@@ -45,7 +45,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [ ] IntroToCpp - Coursera
  - [ ] Python Web Acess
  - [ ] Python Databases
- - [ ] LinuxJourney.com [[https://linuxjourney.com][link]]
+ - [X] LinuxJourney.com [[https://linuxjourney.com][link]]
  - [X] Github for developers [[https://services.github.com/training/][link]]
  - [ ] Github essentials [[https://services.github.com/training/][link]]
  - [X] Guide to Faster, Less Frustrating Debugging by Norman Mattloff [[http://heather.cs.ucdavis.edu/~matloff/UnixAndC/CLanguage/Debug.html][link]]
