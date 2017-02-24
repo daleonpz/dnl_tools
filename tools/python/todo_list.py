@@ -5,7 +5,6 @@
 ###############################
 # - add new jobs
 # - mark jobs as done
-# - print "there is no job called bla bla"
 
 ################################
 #   I M P O R T S
@@ -56,7 +55,12 @@ class todo(object):
 
     def completion_percentage(self, head):
         jobs = re.findall("\*\* " + head + " \[(.+)\]" , self.string)
-        jobs = re.split("/", jobs[0] )  
+        try:
+            jobs = re.split("/", jobs[0] )  
+        except IndexError:
+            print "Invalid header"
+            usage()
+            sys.exit(2)
         print "Completion status:"
         print "     %s of %s (%.2f %%)" % (
                 jobs[0],
@@ -67,8 +71,12 @@ class todo(object):
     def job_retrieval(self, head):
         pattern = re.compile("\*\* "+ head + " (.+?)[\*|\z]", re.DOTALL)
         jobs = re.findall(pattern, self.string)
-        jobs = re.split( "\n", jobs[0] )[1:-1]
-        #jobs = [re.sub(" - \[.\] ","",x) for x in jobs] 
+        try:
+            jobs = re.split( "\n", jobs[0] )[1:-1]
+        except IndexError:
+            print "Invalid header"
+            usage()
+            sys.exit(2)
         print "    " + "\n    ".join(jobs)
 
 
