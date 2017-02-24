@@ -5,6 +5,7 @@
 ###############################
 # - add new jobs
 # - mark jobs as done
+# - print "there is no job called bla bla"
 
 ################################
 #   I M P O R T S
@@ -64,7 +65,7 @@ class todo(object):
  
 
     def job_retrieval(self, head):
-        pattern = re.compile("\*\* "+ head + " (.+?)\*\*", re.DOTALL)
+        pattern = re.compile("\*\* "+ head + " (.+?)[\*|\z]", re.DOTALL)
         jobs = re.findall(pattern, self.string)
         jobs = re.split( "\n", jobs[0] )[1:-1]
         #jobs = [re.sub(" - \[.\] ","",x) for x in jobs] 
