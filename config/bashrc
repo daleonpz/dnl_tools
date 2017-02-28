@@ -133,13 +133,23 @@ On_IWhite='\e[0;107m'   # White
 # PS1='[\u@\h \W]\$ '  # Original prompt     
 PS1="\[$White\]\d - \A \[$BIWhite\][\W]\n\[$BIYellow\][Jobs:\j]  \u@\h -> \[$BIBlue\] "
 
-# my configuration
-alias apagar='sudo shutdown -P now'  
+# program exports
 export PATH="$PATH:/home/dnl/MATLAB/R2013a/bin"
-alias matlab_terminal='matlab -nodesktop'
 export PATH="$PATH:/home/dnl/Documents/scripts"
 export PATH="/opt/android-build:/opt/jdk1.8.0_25/bin:$PATH"
 export EDITOR=vim
+
+# alias
+alias apagar='sudo shutdown -P now' 
+alias setvolume='amixer set Master'
+alias matlab_terminal='matlab -nodesktop'
+alias rmdir='rm -rf'
+
+# functions
+mkcd () {
+    mkdir -p "$*"
+    cd "$*"
+}
 
 # my python scripts
 export PATH="$PATH:/home/dnl/Documents/gitStuff/dnl_tools/tools/python"
@@ -152,4 +162,4 @@ export LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+PATH="/home/dnl/.gem/ruby/2.3.0/bin:$PATH"
