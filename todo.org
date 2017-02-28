@@ -26,9 +26,10 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [ ] mark as undone/done jobs
  - [ ] create innermovement website
  - [ ] search in my home for a specific object, "where is my dog?"
+ - [ ] add voice commands to my laptop (shutdown, setvol, change windows, open an app)
  - [X] quick timer
 ** Hardware [0/1]
- - [ ] adapt a programmable motor to a tripod to be used for pan 
+ - [ ] adapt a programmable motor to a tripod to be used for panning 
 ** Reading - Technology [1/6]
  - [X] Introduction to Networking - Charles Severance
  - [ ] A Tour of C++ - Bjarne Stroustrup
