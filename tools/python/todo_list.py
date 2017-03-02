@@ -5,7 +5,6 @@
 ###############################
 # - add new jobs
 # - mark jobs as done
-# - bug: error when header is contains blank spaces
 
 ################################
 #   I M P O R T S
