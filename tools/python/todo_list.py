@@ -5,6 +5,7 @@
 ###############################
 # - add new jobs
 # - mark jobs as done
+# - bug: error when header is contains blank spaces
 
 ################################
 #   I M P O R T S
@@ -69,15 +70,22 @@ class todo(object):
  
 
     def job_retrieval(self, head):
-        pattern = re.compile("\*\* "+ head + " (.+?)[\*|\z]", re.DOTALL)
-        jobs = re.findall(pattern, self.string)
-        try:
-            jobs = re.split( "\n", jobs[0] )[1:-1]
-        except IndexError:
-            print "Invalid header"
-            usage()
-            sys.exit(2)
-        print "    " + "\n    ".join(jobs)
+     #
+     # ^\*{2}.+[\n\r]       # match the beginning of the line, followed by two stars, anything else in between and a newline
+    # (?P<block>           # open group "block"
+    # (?:              # non-capturing group
+    #    (?!^\*{2})   # a neg. lookahead, making sure no ** follows at the beginning of a line
+    #    [\s\S]       # any character...
+    # )+               # ...at least once
+    # )                    # close group "block" 
+        pattern = re.compile(r'^\*{2} ' + re.escape(head) + r'.+[\n\r](?P<block>(?:(?!^\*{2})[\s\S])+)', re.MULTILINE)
+	try:
+		items = pattern.search(self.string)
+                print items.group('block')[:-2] 
+	except:
+		print "Invalid header"
+                print "Display headers with -H option"
+                sys.exit(2)
 
 
 ################################
