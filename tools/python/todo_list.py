@@ -70,6 +70,7 @@ class todo(object):
  
 
     def job_retrieval(self, head):
+        h = re.findall('^\s*(.*)$',head)[0];
      #
      # ^\*{2}.+[\n\r]       # match the beginning of the line, followed by two stars, anything else in between and a newline
     # (?P<block>           # open group "block"
@@ -78,7 +79,7 @@ class todo(object):
     #    [\s\S]       # any character...
     # )+               # ...at least once
     # )                    # close group "block" 
-        pattern = re.compile(r'^\*{2} ' + re.escape(head) + r'.+[\n\r](?P<block>(?:(?!^\*{2})[\s\S])+)', re.MULTILINE)
+        pattern = re.compile(r'^\*{2} ' + re.escape(h) + r'.+[\n\r](?P<block>(?:(?!^\*{2})[\s\S])+)', re.MULTILINE)
 	try:
 		items = pattern.search(self.string)
                 print items.group('block')[:-2] 
