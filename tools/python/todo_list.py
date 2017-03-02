@@ -52,22 +52,26 @@ class todo(object):
     def headers(self):
         # need to delete the last whitespace
         head = re.findall("\*\* ([A-Za-z\s-]+)", self.string)
-        print "    "+"\n    ".join(head)
+        h = ['%-22s' '%s' % (x, self.completion_status(x)) for x in head ]
+        print "    "+"\n    ".join(h)
 
-    def completion_percentage(self, head):
-        jobs = re.findall("\*\* " + head + " \[(.+)\]" , self.string)
+    def completion_status(self, head):
+        h = re.findall('^\s*(.*[a-zA-Z])\s*',head)[0]
+        jobs = re.findall("\*\* " + h + "\s*\[(.+)\]" , self.string)
         try:
             jobs = re.split("/", jobs[0] )  
+            return "     %s of %s (%.2f %%)" % (
+                jobs[0],
+                jobs[1],
+                float(jobs[0]) /  float(jobs[1]) * 100.0)
         except IndexError:
             print "Invalid header"
             usage()
             sys.exit(2)
+
+    def completion_percentage(self, head):
         print "Completion status:"
-        print "     %s of %s (%.2f %%)" % (
-                jobs[0],
-                jobs[1],
-                float(jobs[0]) /  float(jobs[1]) * 100.0)
- 
+        print self.completion_status(head) 
 
     def job_retrieval(self, head):
         h = re.findall('^\s*(.*)$',head)[0];
