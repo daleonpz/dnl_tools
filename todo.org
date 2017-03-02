@@ -50,6 +50,5 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] Github for developers [[https://services.github.com/training/][link]]
  - [X] Github essentials [[https://services.github.com/training/][link]]
  - [X] Guide to Faster, Less Frustrating Debugging by Norman Mattloff [[http://heather.cs.ucdavis.edu/~matloff/UnixAndC/CLanguage/Debug.html][link]]
- - [ ] GDB Debugger by Peter Jay Salzman [[http://www.dirac.org/linux/gdb/01-Introduction.php][link]]
+ - [X] GDB Debugger by Peter Jay Salzman [[http://www.dirac.org/linux/gdb/01-Introduction.php][link]]
  - [ ] Valgrind tutorial CS107 [[https://web.stanford.edu/class/cs107/guide_valgrind.html][link]]
-
