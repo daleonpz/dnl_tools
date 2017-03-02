@@ -16,7 +16,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] Jiho Kim Video
  - [X] Early morning trainings
  - [ ] Letter to me
-** Tools [6/10]
+** Tools [6/11]
  - [X] shell stats
  - [X] show in screen "Break time"
  - [X] send mail with food list
@@ -30,7 +30,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] quick timer
 ** Hardware [0/1]
  - [ ] adapt a programmable motor to a tripod to be used for panning 
-** Reading - Technology [1/6]
+** Reading - Technology [2/6]
  - [X] Introduction to Networking - Charles Severance
  - [ ] A Tour of C++ - Bjarne Stroustrup
  - [ ] C++ How to Program - Paul Deitel
@@ -42,7 +42,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] Total Knee Health - Martin Koban
  - [X] Supple Leopard - Kelly Starrett
  - [X] Convict Conditioning 1 and 2  
-** Learning Stuff [2/9]
+** Learning Stuff [5/9]
  - [ ] IntroToCpp - Coursera
  - [ ] Python Web Acess
  - [ ] Python Databases
