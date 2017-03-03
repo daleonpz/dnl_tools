@@ -10,3 +10,5 @@ git config --global alias.co "checkout -b"
 git config --global alias.cm "commit -m"
 git config --global alias.s  "status"
 git config --global alias.ss "status -s"
+
+git config --global core.excludesfile ~/.gitignore_global
