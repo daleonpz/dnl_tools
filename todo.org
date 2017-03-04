@@ -42,8 +42,8 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] Total Knee Health - Martin Koban
  - [X] Supple Leopard - Kelly Starrett
  - [X] Convict Conditioning 1 and 2  
-** Learning Stuff [6/9]
- - [ ] IntroToCpp - Coursera
+** Learning Stuff [7/9]
+ - [X] IntroToCpp - Coursera
  - [ ] Python Web Acess
  - [ ] Python Databases
  - [X] LinuxJourney.com [[https://linuxjourney.com][link]]
@@ -52,3 +52,4 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] Guide to Faster, Less Frustrating Debugging by Norman Mattloff [[http://heather.cs.ucdavis.edu/~matloff/UnixAndC/CLanguage/Debug.html][link]]
  - [X] GDB Debugger by Peter Jay Salzman [[http://www.dirac.org/linux/gdb/01-Introduction.php][link]]
  - [X] Valgrind tutorial CS107 [[https://web.stanford.edu/class/cs107/guide_valgrind.html][link]]
+   
