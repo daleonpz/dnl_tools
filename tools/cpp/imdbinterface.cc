@@ -8,7 +8,6 @@
 /*
  * TODO: 
  *      - use something similar to argparser (python)
- *      - hidden password
  *      - ask for possible actions to perform ( add, delete, display)
  *      - add predefined queries ( display full table, one entry)
  *      - add data
