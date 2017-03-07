@@ -15,7 +15,6 @@
  * */
 
 
-#define MAX_LENGTH 200
 static void exit_nicely(PGconn *conn)
 {
     PQfinish(conn);
@@ -31,6 +30,12 @@ int main(int argc, char* argv[]) {
     int             row;
     int             col;
  
+    DB_INPUT dbinputs;
+
+    init_dbinputs(&dbinputs);
+    free_dbinputs(&dbinputs);
+
+
     char *connparse;
     connparse = (char*) calloc(MAX_LENGTH, sizeof(char));
 
