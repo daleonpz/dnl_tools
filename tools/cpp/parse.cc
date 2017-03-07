@@ -1,5 +1,58 @@
 #include "parse.h"
 
+/* ------------------------------------  */
+/*           input parser                */
+/* ------------------------------------  */
+void init_dbinputs(DB_INPUT *input){
+    input->dbname = (char*) calloc(MAX_LENGTH_INPUT, sizeof(char));
+    input->dbuser = (char*) calloc(MAX_LENGTH_INPUT, sizeof(char));
+    input->dbhost = (char*) calloc(MAX_LENGTH_INPUT, sizeof(char));    
+    input->dbpassword = (char*) calloc(MAX_LENGTH_INPUT, sizeof(char));
+}
+
+void free_dbinputs(DB_INPUT *input){
+    free(input->dbname);
+    free(input->dbuser);
+    free(input->dbhost);
+    free(input->dbpassword);
+}
+
+struct option opts_list[] = {
+  {"name",1,0,'n'},
+  {"user",1,0,'u'},
+  {"host",1,0,'H'},
+  {"help",0,0,'h'},
+  {0,0,0,0}
+};
+
+int parse_input(int argc, char **argv, DB_INPUT *inputs)
+{
+    int c;
+    while ( (c = getopt_long(argc, argv, "n:u:H:h", opts_list, NULL)) != EOF){
+        switch(c){
+            case 'n':
+                break;
+
+            case 'u':
+                break;
+
+            case 'H':
+                break;
+
+            case 'h':
+                break;
+
+            default:
+                 printf ("\n Invalid option \n");
+        }
+
+    }
+    return 1;  
+}
+
+/* ------------------------------------  */
+/*         hide password input           */
+/* ------------------------------------  */
 int getch() {
     int ch;
     struct termios t_old, t_new;
