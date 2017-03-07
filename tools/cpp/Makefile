@@ -1,20 +1,17 @@
 CC=g++
 
-# optimizations
 OPT_1= -Wall -Wextra 
-
 OPTIONS= $(OPT_1) -O0 -g 
-
 CFLAGS= $(OPTIONS) 
-
 LIB=-lpq
+DEPS=parse.cc
 
 #-------------------------------------------------------
 OBJ=  imdbinterface.o
 TARGET= test
 
-$(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $(TARGET)  $(OBJ) $(LIB)
+$(TARGET): $(OBJ)  
+	$(CC) $(CFLAGS) -o $(TARGET)  $(OBJ) $(DEPS) $(LIB) 
 
 
 #-------------------------------------------------------
