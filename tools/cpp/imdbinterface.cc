@@ -6,23 +6,13 @@
 
 /*
  * TODO: 
- *      - ask for possible actions to perform ( add, delete, display)
  *      - add predefined queries ( display full table, one entry)
  *      - add data
  *      - delete data
  * */
 
-/*
-static void exit_nicely(PGconn *conn)
-{
-    PQfinish(conn);
-    exit(1);
-}
-*/
 
 int main(int argc, char* argv[]) {
-  //  PGconn          *conn;
-  //  PGresult        *res;
     int             rec_count;
     int             nFields;
     int             row;
@@ -32,39 +22,14 @@ int main(int argc, char* argv[]) {
     DB_INPUT dbinputs;
     init_dbinputs(&dbinputs);
     parse_input(argc,argv,&dbinputs);
-/*
-    char *connparse;
-    connparse = (char*) calloc(MAX_LENGTH, sizeof(char));
 
-    sprintf(connparse,
-            "dbname=%s host=%s user=%s password=%s",
-            dbinputs.dbname,
-            dbinputs.dbhost,
-            dbinputs.dbuser,
-            dbinputs.dbpassword);
-
-    conn = PQconnectdb(connparse);
-     
-    free_dbinputs(&dbinputs);
-    free(connparse);
-*/
     DBinterface dbinterface(&dbinputs);
-
     free_dbinputs(&dbinputs);
-/*
-     if (PQstatus(conn) == CONNECTION_BAD) {
-        fprintf(stderr, "Connection to database failed: %s",
-                PQerrorMessage(conn));
-        exit_nicely(conn);
-     }
-     else 
-         puts("Connection is established!");
 
-    db_interface dbinterface(conn);
-    */
+    dbinterface.checkconnection();
+
     if( (op=dbinterface.display_menu()) < 0 ){
         puts("invalid option");
-       // ~dbinterface();
         exit(1);
     } 
 /*

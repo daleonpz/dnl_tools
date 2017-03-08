@@ -1,11 +1,13 @@
 #include "db_interface.h"
 
-// Constructor 
+/* ---------------------------------------- */ 
+/*           CONSTRUCTOR                    */
+/* ---------------------------------------- */ 
 DBinterface::DBinterface(DB_INPUT* inputs){
     char *connparse;
     connparse = (char*) calloc(MAX_LENGTH, sizeof(char));
 
-    printf(connparse,
+    sprintf(connparse,
             "dbname=%s host=%s user=%s password=%s",
             inputs->dbname,
             inputs->dbhost,
@@ -14,24 +16,30 @@ DBinterface::DBinterface(DB_INPUT* inputs){
 
     conn = PQconnectdb(connparse);
     free(connparse);
-/*
-    if (PQstatus(conn) == CONNECTION_BAD) {
-        fprintf(stderr, "Connection to database failed: %s",
-                PQerrorMessage(conn));
-        PQfinish(conn);
-        exit(1);
-     }
-     else 
-         puts("Connection is established!");
-*/
- 
 }
 
-// Destructor
+/* ---------------------------------------- */ 
+/*            DESTRUCTOR                    */
+/* ---------------------------------------- */ 
 DBinterface::~DBinterface(){
     PQfinish(conn);
     puts("Connection is closed!");
 
+}
+
+/* ---------------------------------------- */ 
+/*            M E T H O D S                 */
+/* ---------------------------------------- */ 
+
+void DBinterface::checkconnection() {
+    if (PQstatus(conn) == CONNECTION_BAD) {
+        fprintf(stderr, "Connection to database failed: %s",
+                PQerrorMessage(conn));
+        exit(1);
+     }
+     else{
+        puts("Connection is established!") ;
+     }
 }
 
 int DBinterface::display_menu() const{

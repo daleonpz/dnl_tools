@@ -6,6 +6,7 @@
 #include <libpq-fe.h>
 #include "parse.h"
 
+
 using namespace std;
 
 /* ------------------------------------------- */
@@ -20,6 +21,7 @@ class DBinterface {
         DBinterface(DB_INPUT*);
         ~DBinterface();
 
+        void checkconnection() ;
         int display_menu() const;
 
 };
