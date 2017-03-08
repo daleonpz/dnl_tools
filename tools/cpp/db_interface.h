@@ -16,13 +16,12 @@ using namespace std;
 class DBinterface {
     private:
         PGconn *conn;
-        PGresult *res;
     public:
         DBinterface(DB_INPUT*);
         ~DBinterface();
 
         void checkconnection() ;
-        int display_menu() const;
-
+        int display_menu() ;
+        void retrieve_data();
 };
 #endif

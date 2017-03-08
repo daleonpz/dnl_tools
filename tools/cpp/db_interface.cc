@@ -28,9 +28,12 @@ DBinterface::~DBinterface(){
 }
 
 /* ---------------------------------------- */ 
-/*            M E T H O D S                 */
+/*            M A C R O S                   */
 /* ---------------------------------------- */ 
 
+/* ---------------------------------------- */ 
+/*            M E T H O D S                 */
+/* ---------------------------------------- */ 
 void DBinterface::checkconnection() {
     if (PQstatus(conn) == CONNECTION_BAD) {
         fprintf(stderr, "Connection to database failed: %s",
@@ -42,7 +45,9 @@ void DBinterface::checkconnection() {
      }
 }
 
-int DBinterface::display_menu() const{
+
+
+int DBinterface::display_menu() {
 
     int option;
 
@@ -54,10 +59,59 @@ int DBinterface::display_menu() const{
     cin >> option;
 
     if ((option < 1 ) || (option > 3) ){
-        return -1;
+        return 1;
     }
 
-    return option;
+    switch(option){
+        case 1:
+            retrieve_data();
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            break;
+    }
+
+
+
+    return 0;
 }
 
+
+void DBinterface::retrieve_data(){
+    PGresult *res;
+    string query;
+    int ntuples;
+    int nfields;
+    int i,j;
+
+    cin.ignore();
+    cout << "q<< ";
+    getline(cin,query);
+    res = PQexec(conn, query.c_str() );
+
+    if ( PQresultStatus(res) != PGRES_TUPLES_OK ){
+        fprintf(stderr, "FETCH ALL failed: %s", PQerrorMessage(conn));
+        PQclear(res);
+        exit(1);
+    }
+
+    ntuples = PQntuples(res);
+    nfields = PQnfields(res);
+
+    puts("==========================");
+ 
+    for (i=0; i<ntuples; i++) {
+        for (j=0; j<nfields; j++) {
+            printf("%s\t", PQgetvalue(res, i, j));
+         }
+        puts("");
+    }
+ 
+    puts("==========================");
+
+    PQclear(res);
+}
 
