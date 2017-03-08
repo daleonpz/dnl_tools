@@ -1,9 +1,8 @@
 #include <stdio.h>
-#include <libpq-fe.h>
-#include <string.h> 
+//#include <libpq-fe.h>
 #include <stdlib.h>
-#include <iostream>
 #include "parse.h"
+#include "db_interface.h"
 
 /*
  * TODO: 
@@ -13,31 +12,30 @@
  *      - delete data
  * */
 
-
+/*
 static void exit_nicely(PGconn *conn)
 {
     PQfinish(conn);
     exit(1);
 }
-
+*/
 
 int main(int argc, char* argv[]) {
-    PGconn          *conn;
-    PGresult        *res;
+  //  PGconn          *conn;
+  //  PGresult        *res;
     int             rec_count;
     int             nFields;
     int             row;
     int             col;
+    int             op;
  
     DB_INPUT dbinputs;
-
     init_dbinputs(&dbinputs);
-
+    parse_input(argc,argv,&dbinputs);
+/*
     char *connparse;
     connparse = (char*) calloc(MAX_LENGTH, sizeof(char));
 
-    parse_input(argc,argv,&dbinputs);
-   
     sprintf(connparse,
             "dbname=%s host=%s user=%s password=%s",
             dbinputs.dbname,
@@ -49,7 +47,11 @@ int main(int argc, char* argv[]) {
      
     free_dbinputs(&dbinputs);
     free(connparse);
+*/
+    DBinterface dbinterface(&dbinputs);
 
+    free_dbinputs(&dbinputs);
+/*
      if (PQstatus(conn) == CONNECTION_BAD) {
         fprintf(stderr, "Connection to database failed: %s",
                 PQerrorMessage(conn));
@@ -58,8 +60,17 @@ int main(int argc, char* argv[]) {
      else 
          puts("Connection is established!");
 
+    db_interface dbinterface(conn);
+    */
+    if( (op=dbinterface.display_menu()) < 0 ){
+        puts("invalid option");
+       // ~dbinterface();
+        exit(1);
+    } 
+/*
+
      res = PQexec(conn, "select * from parkour");
-     /* sorted entries (codigo, nombre, email)*/
+      sorted entries (codigo, nombre, email) 
  
      if (PQresultStatus(res) != PGRES_TUPLES_OK) {
         fprintf(stderr, "FETCH ALL failed: %s", PQerrorMessage(conn));
@@ -85,8 +96,9 @@ int main(int argc, char* argv[]) {
      PQclear(res);
 
      PQfinish(conn);
-
-     puts("Connection is closed!");
+*/
+ //   ~dbinterface();
+//     puts("Connection is closed!");
  
      return 0;
  }
