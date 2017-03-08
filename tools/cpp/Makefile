@@ -7,7 +7,7 @@ LIB=-lpq
 DEPS= db_interface.cc parse.cc
 
 #-------------------------------------------------------
-OBJ=  imdbinterface.o
+OBJ=  main.o
 TARGET= test
 
 $(TARGET): $(OBJ)  
