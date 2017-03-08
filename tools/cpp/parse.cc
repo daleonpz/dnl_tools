@@ -4,16 +4,16 @@
 /*           input parser                */
 /* ------------------------------------  */
 void init_dbinputs(DB_INPUT *input){
-    input->dbname = (char*) calloc(MAX_LENGTH_INPUT, sizeof(char));
-    input->dbuser = (char*) calloc(MAX_LENGTH_INPUT, sizeof(char));
-    input->dbhost = (char*) calloc(MAX_LENGTH_INPUT, sizeof(char));    
+  //  input->dbname = (char*) calloc(MAX_LENGTH_INPUT, sizeof(char));
+  //  input->dbuser = (char*) calloc(MAX_LENGTH_INPUT, sizeof(char));
+   // input->dbhost = (char*) calloc(MAX_LENGTH_INPUT, sizeof(char));    
     input->dbpassword = (char*) calloc(MAX_LENGTH_INPUT, sizeof(char));
 }
 
 void free_dbinputs(DB_INPUT *input){
-    free(input->dbname);
-    free(input->dbuser);
-    free(input->dbhost);
+    //free(input->dbname);
+    //free(input->dbuser);
+    //free(input->dbhost);
     free(input->dbpassword);
 }
 
@@ -28,25 +28,36 @@ struct option opts_list[] = {
 int parse_input(int argc, char **argv, DB_INPUT *inputs)
 {
     int c;
+
+    inputs->dbname = "pucp";
+    inputs->dbuser = "user";
+    inputs->dbhost = "localhost";
+
     while ( (c = getopt_long(argc, argv, "n:u:H:h", opts_list, NULL)) != EOF){
         switch(c){
             case 'n':
+                inputs->dbname = optarg;
                 break;
 
             case 'u':
+                inputs->dbuser = optarg;
                 break;
 
             case 'H':
+                inputs->dbhost = optarg;
                 break;
 
             case 'h':
+                printf("help!!!! ");
                 break;
 
             default:
-                 printf ("\n Invalid option \n");
+                 exit(1);
         }
-
     }
+
+    getpass(&(inputs->dbpassword));
+ 
     return 1;  
 }
 

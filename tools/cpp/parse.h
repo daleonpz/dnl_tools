@@ -14,16 +14,16 @@
 using namespace std;
 
 typedef struct{
-    char *dbname;
-    char *dbuser;
-    char *dbhost;
+    const char *dbname;
+    const char *dbuser;
+    const char *dbhost;
     char *dbpassword;
 } DB_INPUT; 
 
 void init_dbinputs(DB_INPUT *input);
 void free_dbinputs(DB_INPUT *input);
 
-int parse_input(int argc, char **argv);
+int parse_input(int argc, char **argv, DB_INPUT *inputs);
 
 int getch();
 void getpass(char **pass);

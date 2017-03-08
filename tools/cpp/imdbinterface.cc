@@ -7,7 +7,6 @@
 
 /*
  * TODO: 
- *      - use something similar to argparser (python)
  *      - ask for possible actions to perform ( add, delete, display)
  *      - add predefined queries ( display full table, one entry)
  *      - add data
@@ -33,26 +32,22 @@ int main(int argc, char* argv[]) {
     DB_INPUT dbinputs;
 
     init_dbinputs(&dbinputs);
-    free_dbinputs(&dbinputs);
-
 
     char *connparse;
     connparse = (char*) calloc(MAX_LENGTH, sizeof(char));
 
-    const char *dbuser;
-    char *dbpassword;
-    dbpassword = (char*) calloc(20, sizeof(char));
-    dbuser = argv[1];
-    getpass(&dbpassword);
-
-    const char *dbname = "pucp";
-    const char *dbhost = "localhost";
-
-    sprintf(connparse,"dbname=%s host=%s user=%s password=%s",dbname,dbhost,dbuser,dbpassword);
+    parse_input(argc,argv,&dbinputs);
+   
+    sprintf(connparse,
+            "dbname=%s host=%s user=%s password=%s",
+            dbinputs.dbname,
+            dbinputs.dbhost,
+            dbinputs.dbuser,
+            dbinputs.dbpassword);
 
     conn = PQconnectdb(connparse);
      
-    free(dbpassword);
+    free_dbinputs(&dbinputs);
     free(connparse);
 
      if (PQstatus(conn) == CONNECTION_BAD) {
