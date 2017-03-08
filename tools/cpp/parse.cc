@@ -30,7 +30,7 @@ int parse_input(int argc, char **argv, DB_INPUT *inputs)
     int c;
 
     inputs->dbname = "pucp";
-    inputs->dbuser = "user";
+    inputs->dbuser = "imuser";
     inputs->dbhost = "localhost";
 
     while ( (c = getopt_long(argc, argv, "n:u:H:h", opts_list, NULL)) != EOF){
@@ -48,7 +48,11 @@ int parse_input(int argc, char **argv, DB_INPUT *inputs)
                 break;
 
             case 'h':
-                printf("help!!!! ");
+                puts("-n, --name:\t database name \n"
+                     "-u, --user:\t database username\n"
+                     "-H, --host:\t database host"
+                     );
+                exit(0);
                 break;
 
             default:
@@ -112,4 +116,7 @@ void getpass(char **pass )
   cout <<endl;
   strcpy (*pass, password.c_str());
 }
+
+
+
 
