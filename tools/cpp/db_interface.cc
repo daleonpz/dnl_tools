@@ -28,8 +28,12 @@ DBinterface::~DBinterface(){
 }
 
 /* ---------------------------------------- */ 
-/*            M A C R O S                   */
+/*      Macros -  Templates - Functions     */
 /* ---------------------------------------- */ 
+template<typename T> void printElement(T t)
+{
+    cout << left << setw(20) << setfill(' ') << t;
+}
 
 /* ---------------------------------------- */ 
 /*            M E T H O D S                 */
@@ -51,10 +55,12 @@ int DBinterface::display_menu() {
 
     int option;
 
-    cout << "What do you want to do?" << endl;
-    cout << "(1) retrieve data" << endl;
-    cout << "(2) update data" << endl;
-    cout << "(3) delete data" << endl;
+    cout << "Que quieres hacer?" << endl;
+    cout << "(1) mostrar toda la data" << endl;
+    cout << "(2) buscar datos usando el codigo del alumno" << endl;
+    cout << "(3) buscar datos usando el correo del alumno" << endl;
+    cout << "(4) actualizar los datos de un alumno" << endl;
+    cout << "(5) borrar datos de un alumno" << endl;
 
     cin >> option;
 
@@ -63,14 +69,11 @@ int DBinterface::display_menu() {
     }
 
     switch(option){
-        case 1:
-            retrieve_data();
+        case 1: case 2 : case 3:
+            retrieve_data(option-1);
             break;
 
-        case 2:
-            break;
-
-        case 3:
+        case 4:
             break;
     }
 
@@ -80,18 +83,37 @@ int DBinterface::display_menu() {
 }
 
 
-void DBinterface::retrieve_data(){
+
+void DBinterface::retrieve_data(int qtype) {
     PGresult *res;
-    string query;
+    string query, codigo, email;
     int ntuples;
     int nfields;
     int i,j;
 
-    cin.ignore();
-    cout << "q<< ";
-    getline(cin,query);
-    res = PQexec(conn, query.c_str() );
+  //  cout << "Table name: ";
+  //  cin >> query;
 
+    switch(qtype){
+        case 0:
+            query = "select * from parkour";
+            break;
+    
+        case 1:
+            cout << "Ingrese codigo:" << endl;
+            cin >> codigo;
+            query = "select * from parkour where codigo = " + codigo;
+            break;
+
+        case 2:
+            cout << "Ingrese correo:" << endl;
+            cin >> email;
+            query = "select * from parkour where correo = " + email;
+            break;
+    }
+
+    res = PQexec(conn, query.c_str() );
+    
     if ( PQresultStatus(res) != PGRES_TUPLES_OK ){
         fprintf(stderr, "FETCH ALL failed: %s", PQerrorMessage(conn));
         PQclear(res);
@@ -100,18 +122,34 @@ void DBinterface::retrieve_data(){
 
     ntuples = PQntuples(res);
     nfields = PQnfields(res);
+   
+    for (j=0; j<nfields; j++) {
+        printElement( PQfname(res,j) );  
+        cout << "|";  
+         }
+    puts("");
+    cout << string(62,'-') << endl;
 
-    puts("==========================");
- 
     for (i=0; i<ntuples; i++) {
         for (j=0; j<nfields; j++) {
-            printf("%s\t", PQgetvalue(res, i, j));
+            printElement( PQgetvalue(res, i, j) ) ;
+            cout << "|";
          }
         puts("");
     }
  
-    puts("==========================");
-
-    PQclear(res);
+    PQclear(res);  
 }
 
+void DBinterface::update_data() {
+    PGresult *res;
+/*
+    char c[] = "*"; 
+    retrieve_data(c,0);
+
+    cout << "what do you want to update:" << endl;
+    string field;
+    cin >> field;
+*/
+
+}

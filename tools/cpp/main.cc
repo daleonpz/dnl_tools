@@ -13,10 +13,6 @@
 
 
 int main(int argc, char* argv[]) {
-    int             rec_count;
-    int             nFields;
-    int             row;
-    int             col;
  
     DB_INPUT dbinputs;
     init_dbinputs(&dbinputs);

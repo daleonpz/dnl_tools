@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include <libpq-fe.h>
 #include "parse.h"
 
@@ -22,6 +23,7 @@ class DBinterface {
 
         void checkconnection() ;
         int display_menu() ;
-        void retrieve_data();
+        void retrieve_data(int );
+        void update_data() ;
 };
 #endif
