@@ -8,6 +8,7 @@ import smtplib
 import getpass
 import re
 import time, sched
+import markdown
 
 from datetime import timedelta, datetime
 
@@ -61,6 +62,17 @@ class Gmail_api(object):
     def get_data(self):
         self.receiver = raw_input('To >> ')
         self.body = request_list()
+        self.ct_type = 'plain' 
+
+    def get_mddata(self):
+        self.receiver = raw_input('To >> ')
+        # processing one document at a time
+        path = raw_input('filepath >> ')
+        f = open(path,'r')
+        md = f.read()
+        self.body = markdown.markdown(md)
+        f.close()
+        self.ct_type = 'html'
 
     def send_message(self):
         session = open_session(self.server, self.port)
@@ -70,7 +82,7 @@ class Gmail_api(object):
                 "From: " + self.email,
                 "Subject: Shopping List" ,
                 "To: " + self.receiver,
-                "Content-Type: text/plain"
+                "Content-Type: text/" + self.ct_type,
                 ]
         headers = "\r\n".join(headers)
 
@@ -98,7 +110,4 @@ class Gmail_api(object):
 #      M A I N
 ######################################
 
-gm = Gmail_api()
-gm.get_data()
-gm.set_alarm()
 
