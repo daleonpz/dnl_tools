@@ -16,7 +16,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] Jiho Kim Video
  - [X] Early morning trainings
  - [ ] Letter to me
-** Tools [7/11]
+** Tools [9/14]
  - [X] shell stats
  - [X] show in screen "Break time"
  - [X] send mail with food list
@@ -28,7 +28,9 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [ ] search in my home for a specific object, "where is my dog?"
  - [ ] add voice commands to my laptop (shutdown, setvol, change windows, open an app)
  - [X] quick timer
- - [X] database for parkour students 
+ - [X] database for parkour students
+ - [X] mail manager for parkour related stuff
+ - [X] setup vimrc 
 ** Hardware [0/1]
  - [ ] adapt a programmable motor to a tripod to be used for panning 
 ** Reading - Technology [2/6]
@@ -43,7 +45,9 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] Total Knee Health - Martin Koban
  - [X] Supple Leopard - Kelly Starrett
  - [X] Convict Conditioning 1 and 2  
-** Learning Stuff [7/9]
+** Learning Stuff [9/11]
+ - [X] Learn vim
+ - [X] Learn dvorak layout
  - [X] IntroToCpp - Coursera
  - [ ] Python Web Acess
  - [ ] Python Databases
