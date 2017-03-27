@@ -9,6 +9,7 @@ import getpass
 import re
 import time, sched
 import markdown
+import codecs
 
 from datetime import timedelta, datetime
 
@@ -57,6 +58,12 @@ class Gmail_api(object):
         self.body = markdown.markdown(md)
         f.close()
     
+    def get_mddata_utf8(self, path):
+        f = codecs.open(path,mode='r', encoding="utf-8")
+        md = f.read()
+        self.body = markdown.markdown(md)
+        f.close()
+    
     def set_headers(self, subject, receiver, ct_type):
         self.subject = subject
         self.receiver = receiver
@@ -79,7 +86,7 @@ class Gmail_api(object):
         session.sendmail(
                 self.email,
                 self.receiver,
-                headers + "\r\n\r\n" + self.body
+                headers + "\r\n\r\n" + self.body.encode('utf-8')
                 )
         session.quit()
 
