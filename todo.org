@@ -16,7 +16,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] Jiho Kim Video
  - [X] Early morning trainings
  - [ ] Letter to me
-** Tools [9/14]
+** Tools [10/14]
  - [X] shell stats
  - [X] show in screen "Break time"
  - [X] send mail with food list
@@ -24,7 +24,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] review the tasks I have here, input: list headers, list undone/done
  - [ ] add jobs by command line to this file 
  - [ ] mark as undone/done jobs
- - [ ] create innermovement website
+ - [X] create innermovement website
  - [ ] search in my home for a specific object, "where is my dog?"
  - [ ] add voice commands to my laptop (shutdown, setvol, change windows, open an app)
  - [X] quick timer
