@@ -9,6 +9,7 @@ import getpass
 import re
 import time, sched
 import markdown
+import codecs
 
 from datetime import timedelta, datetime
 
@@ -20,17 +21,6 @@ def request_id():
     password = getpass.getpass('password >> ')
 
     return mail + '@gmail.com', password
-
-def request_list():
-    print 'Add items to your list:'
-    print "write 'done' when your list is complete:"
-    item = raw_input('>> ')
-    my_list = ''
-    while (item != 'done'):
-        my_list += (' - ' + item + '\n')
-        item = raw_input('>> ')
-
-    return my_list
 
 def open_session(server, port):
         session = smtplib.SMTP(server, port)
@@ -59,20 +49,26 @@ class Gmail_api(object):
 
         session.quit()
 
-    def get_data(self):
-        self.receiver = raw_input('To >> ')
-        self.body = request_list()
-        self.ct_type = 'plain' 
+    def set_body(self, body):
+        self.body = body
 
-    def get_mddata(self):
-        self.receiver = raw_input('To >> ')
-        # processing one document at a time
-        path = raw_input('filepath >> ')
+    def get_mddata(self, path):
         f = open(path,'r')
         md = f.read()
         self.body = markdown.markdown(md)
         f.close()
-        self.ct_type = 'html'
+    
+    def get_mddata_utf8(self, path):
+        f = codecs.open(path,mode='r', encoding="utf-8")
+        md = f.read()
+        self.body = markdown.markdown(md)
+        f.close()
+    
+    def set_headers(self, subject, receiver, ct_type):
+        self.subject = subject
+        self.receiver = receiver
+        self.ct_type = ct_type
+
 
     def send_message(self):
         session = open_session(self.server, self.port)
@@ -80,7 +76,7 @@ class Gmail_api(object):
         
         headers = [
                 "From: " + self.email,
-                "Subject: Shopping List" ,
+                "Subject: " + self.subject ,
                 "To: " + self.receiver,
                 "Content-Type: text/" + self.ct_type,
                 ]
@@ -90,15 +86,14 @@ class Gmail_api(object):
         session.sendmail(
                 self.email,
                 self.receiver,
-                headers + "\r\n\r\n" + self.body
+                headers + "\r\n\r\n" + self.body.encode('utf-8')
                 )
         session.quit()
 
-    def set_alarm(self):
+    def set_alarm(self, giventime):
         now = datetime.now()
          # The input should be something like this 18:45
-        timer = raw_input('Set alarm, 24Hrs format >> ')
-        timer = map(int,re.split(":",timer))
+        timer = map(int,re.split(":",giventime))
 
         delta = (timer[0] - now.hour )*3600 + (timer[1] - now.minute)*60 
 
@@ -109,5 +104,4 @@ class Gmail_api(object):
 ######################################
 #      M A I N
 ######################################
-
 
