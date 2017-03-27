@@ -25,6 +25,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [ ] add jobs by command line to this file 
  - [ ] mark as undone/done jobs
  - [X] create innermovement website
+ - [ ] create a blog related to things I code
  - [ ] search in my home for a specific object, "where is my dog?"
  - [ ] add voice commands to my laptop (shutdown, setvol, change windows, open an app)
  - [X] quick timer
