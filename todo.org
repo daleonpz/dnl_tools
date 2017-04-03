@@ -32,6 +32,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] database for parkour students
  - [X] mail manager for parkour related stuff
  - [X] setup vimrc 
+ - [ ] vim/bash interface to format workouts routines 
 ** Hardware [0/1]
  - [ ] adapt a programmable motor to a tripod to be used for panning 
 ** Reading - Technology [2/6]
