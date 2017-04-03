@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Application	wointerface.py	/^class Application(Frame):$/;"	c
+Countdown	wointerface.py	/^class Countdown(Label):$/;"	c
+__init__	wointerface.py	/^        def __init__(self, parent, timer):$/;"	m	class:Countdown
+__init__	wointerface.py	/^    def __init__(self,timer, master=None):$/;"	m	class:Application
+argparse	wointerface.py	/^import argparse$/;"	i
+createWidgets	wointerface.py	/^    def createWidgets(self, timer, header):$/;"	m	class:Application
+getopt	wointerface.py	/^import getopt$/;"	i
+main	wointerface.py	/^def main():$/;"	f
+pygame	wointerface.py	/^import pygame$/;"	i
+re	wointerface.py	/^import re$/;"	i
+start	wointerface.py	/^        def start(self):$/;"	m	class:Countdown
+stop_loop	wointerface.py	/^        def stop_loop(self):$/;"	m	class:Countdown
+sys	wointerface.py	/^import sys$/;"	i
+tick	wointerface.py	/^        def tick(self):$/;"	m	class:Countdown
