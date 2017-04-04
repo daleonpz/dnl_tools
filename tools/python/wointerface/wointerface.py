@@ -6,85 +6,132 @@
 ################################
 #   I M P O R T S
 ################################
-from Tkinter import *
+import Tkinter as tk
 
 import sys
 import re
 import getopt
 import pygame
 import argparse
+import time
 
 ################################
 #   F U N C T I O N S
 ################################
+def sequence(*args):
+    for function in args:
+        function
 ################################
 #   C L A S S E S 
 ################################
-
-# must not use time.sleep() since it blocks the app
-class Countdown(Label):
-        def __init__(self, parent, timer):
+class Countdown():
+        def __init__(self, timer, frame):
             t = map(int,re.split(":",timer))
             self.value = t[1] + t[0]*60
+            self.initvalue = self.value
             t ="{:02d}:{:02d}".format(*divmod( self.value, 60)) 
-            Label.__init__(self, parent, width=5, text=t, font=('Helvetica','20'))
-            self._job_id = None
+
+            self.label = tk.Label(frame, width=5, text=t, font=('Helvetica','20'))
             pygame.init()
             pygame.mixer.music.load("/home/dnl/Documents/gitStuff/dnl_tools/tools/python/timer.wav")
 
         def tick(self):
             self.value -= 1
-            text = "{:02d}:{:02d}".format(*divmod(self.value, 60))
-            self.configure(text=text)
+            t = "{:02d}:{:02d}".format(*divmod(self.value, 60))
+            self.label.configure(text=t)
             if self.value > 0:
-                self._job_id = self.after(1000, self.tick)
+                self.label.after(1000, self.tick)
 
             if self.value == 0: self.stop_loop()
 
         def start(self):
-            if self._job_id is not None: return
-
-            self.stop_requested = False
-            self.after(1000, self.tick)
+            self.label.after(1000, self.tick)
 
         def stop_loop(self):
-            if not( self.stop_requested ):
-                pygame.mixer.music.play()
-                self.after(5000, self.stop_loop)
+            pygame.mixer.music.play()
+            t ="{:02d}:{:02d}".format(*divmod( self.initvalue, 60)) 
+            self.label.configure(text = t)
+            self.value = self.initvalue 
 
-class Application(Frame):
-    def createWidgets(self, timer):
-        label =  Countdown(self, timer)
-        label.config( height = 2) 
-        label.pack(side=LEFT)
-        label.start()
+class woToObject(object):
+    def __init__(self, workout_file, master):
+        self.master = master
 
-        title = Label(self, font=('Helvetica','20', 'bold'));
-        title.config( height = 2 )
-        title.pack(side=TOP)
-
-        self.STOP = Button(self)
-        self.STOP["text"] = "STOP / QUIT"
-        self.STOP["command"] =  self.quit
-        self.STOP.config( height = 2, width = 20 )
-        self.STOP.pack(side=LEFT)
-
-    # SyntaxError: non-default argument follows default argument
-    # thus, variable timer cannot be after master=None
-    def __init__(self, routine, master=None):
-        Frame.__init__(self, master)
-        self.pack()
-#         self.createWidgets(timer)
-
-class woToObject( object ):
-    def __init__(self, workout_file):
         infile = open(workout_file)
         rawtext = infile.read()
         infile.close()
-        self.routines = self.toObject(rawtext)
+        self.superset = re.split("\n\n",rawtext)
 
-    def toObject(self, rawtext):
-        print rawtext
+        self.frame = tk.Frame(master)
+        self.frame.grid()
+        self.callGOWidget()
+
+    def toObject(self):
+        self.frame.destroy()
+        struct = []
+        l = len(self.superset)
+        self.count = 0
+        self.setcount = 0
+        
+        self.repInstance(0, l) 
+            
+
+    def repInstance(self, i, t):
+        self.frame = tk.Frame(self.master) # new frame
+        self.frame.grid()
+
+        sets =  re.split("\n\* ",self.superset[i])
+        ssrep = re.findall("[0-9:]+", sets[0] ) # superset rep
+            #  [ rep , break] , check this part, later ;)
+        rset = [ re.split("\n",x) for x in sets[1:] ]# set reps
+            #  [ ex , rep, break ]
+
+        numberofsets = int(ssrep[0])
+        
+        tk.Label(self.frame , text = "Superset " + str(i+1) + "/" + str(t) ).grid(
+                    row=0, column=0, columnspan=numberofsets  )
+
+        ssbreakLabel = Countdown("00:02", self.frame)
+            # possible bug, when ssrep[0] = 0
+        ssbreakLabel.label.grid(
+                    row=1, column=1, columnspan=numberofsets-1) 
+        
+        butStart = tk.Button(self.frame, text="break", 
+                    command = lambda:sequence( 
+                        ssbreakLabel.start(), self.incrementCounter( numberofsets  ) 
+                        )  
+                    )   
+        butStart.grid(row=1, column=0)
+
+        butDone = tk.Button(self.frame, text="Superset Done", 
+                command =  lambda:sequence (
+                   self.destroy_frame(),
+                   self.repInstance( self.setcount, t),
+                    )
+                )
+
+        butDone.grid(row=1, column=numberofsets+1)
+
+    def destroy_frame(self):
+        if (self.count != 0):
+            self.setcount += 1
+
+        if (self.setcount  == len( self.superset) ):
+            self.frame.quit()
+        else:
+            self.frame.destroy()
+
+    def incrementCounter(self, limit):
+        self.count+=1
+        if (self.count == limit):
+            self.count = 0
+            self.setcount += 1
+    
+    def callGOWidget(self):
+        self.GO = tk.Button(self.frame)
+        self.GO["text"] = "GO"
+        self.GO["command"] =  self.toObject
+        self.GO.grid(row=0, column=0, padx=20)
 
 ################################
 #   M A I N
