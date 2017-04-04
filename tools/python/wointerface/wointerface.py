@@ -142,15 +142,21 @@ def main():
 
     args = parser.parse_args()
 
-    workout_data = woToObject(args.routine)
-#     
-# 
-#     root = Tk()
-#     root.title("Work out of the day")
-#     app = Application( args.routine, master=root)
-#     app.mainloop()
-#     root.destroy()
-
+    root = tk.Tk()
+#     root.title(args.routine)
+    app = woToObject(args.routine, root)
+    start = time.time()
+    root.mainloop()
+    end = time.time()
+    root.destroy()
+    
+    out_file = open("workout.log", 'a')
+    out_file.write( 
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\t" 
+            + args.routine + "\t" 
+            + str(end-start) + "\n" )
+    out_file.close()
+ 
 if __name__ == "__main__":
     main()
 
