@@ -12,9 +12,9 @@
 * todo_list.py **(python2.7)**: interface to manage my to-do list, I am too lazy to use emacs :smiley:
 
 # Projects
-* my parkour blog [On github](https://github.com/daleonpz/daleonpz.github.io)
-* my developer blog [On github](https://github.com/daleonpz/blog)
-* parkour company website [On github](https://github.com/innermovement/innermovement.github.io)
+* My parkour blog [On github](https://github.com/daleonpz/daleonpz.github.io) [blog link](https://myparkourjournal.com/)
+* My developer blog [On github](https://github.com/daleonpz/blog) [blog link](https://daleonpz.com)
+* My parkour company website [On github](https://github.com/innermovement/innermovement.github.io) [website link](https://innermovementproject.com/)
 
 # Supports 
 * exec_break.sh **(bash)**: execute the break reminder using cron
@@ -22,6 +22,7 @@
 
 # Fun
 * shell_stats.py **(python2.7)**: stats of the type of commands executed in terminal
+* when `main` is not a function **(C)**: hack `main` using something similar to a buffer overflow [blog post](https://daleonpz.com/blog/hack-main) [code](https://github.com/daleonpz/blog/tree/master/_code/posts/hack-main)
 
 Feel free to send me a PR or a message :blush:
 
