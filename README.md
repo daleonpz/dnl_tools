@@ -3,12 +3,18 @@
  - Everything I am doing or I will do is on my To-do list
 ---
 # Tools
+* imdatabase **(cpp)**: postgres interface to manage my own database. [On github](https://github.com/daleonpz/imdatabase)
 * break_reminder.sh **(bash)**: show a timer on the screen 
 * create_pyfile.py **(python2.7)**: create python files with sections
 * gmailapi **(python2.7)**: package to send and schedule mails
 * sendfoodlist.py **(python2.7)**: schedule a mail with the food list
 * timer.py **(python2.7)**: timer for general purposes
 * todo_list.py **(python2.7)**: interface to manage my to-do list, I am too lazy to use emacs :smiley:
+
+# Projects
+* my parkour blog [On github](https://github.com/daleonpz/daleonpz.github.io)
+* my developer blog [On github](https://github.com/daleonpz/blog)
+* parkour company website [On github](https://github.com/innermovement/innermovement.github.io)
 
 # Supports 
 * exec_break.sh **(bash)**: execute the break reminder using cron
