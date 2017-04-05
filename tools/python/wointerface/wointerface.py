@@ -103,6 +103,17 @@ class woToObject(object):
                     )   
         butStart.grid(row=1, column=0)
 
+             # rset = [  [ ex , rep, break ]...]
+        numberofexcercises = len(rset)
+        
+        for j in range(numberofexcercises):
+            tk.Label(self.frame, text = rset[j][0]).grid(
+                        row = 2+j, column=0)
+
+            for k in range(numberofsets):
+                tk.Label(self.frame, text = rset[j][1]).grid(
+                        row = 2+j, column=1+k)
+
         butDone = tk.Button(self.frame, text="Superset Done", 
                 command =  lambda:sequence (
                    self.destroy_frame(),
@@ -110,7 +121,8 @@ class woToObject(object):
                     )
                 )
 
-        butDone.grid(row=1, column=numberofsets+1)
+        butDone.grid(row=numberofexcercises+2, column=0)
+
 
     def destroy_frame(self):
         if (self.count != 0):
@@ -120,12 +132,15 @@ class woToObject(object):
             self.frame.quit()
         else:
             self.frame.destroy()
+            self.count = 0
 
     def incrementCounter(self, limit):
         self.count+=1
         if (self.count == limit):
             self.count = 0
             self.setcount += 1
+            self.destroy_frame()
+            self.repInstance( self.setcount, len(self.superset) )
     
     def callGOWidget(self):
         self.GO = tk.Button(self.frame)
