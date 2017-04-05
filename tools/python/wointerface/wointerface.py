@@ -96,7 +96,7 @@ class woToObject(object):
         ssbreakLabel.label.grid(
                     row=1, column=1, columnspan=numberofsets-1) 
         
-        butStart = tk.Button(self.frame, text="break", 
+        butStart = tk.Button(self.frame, text="Set Break", 
                     command = lambda:sequence( 
                         ssbreakLabel.start(), self.incrementCounter( numberofsets  ) 
                         )  
@@ -107,12 +107,17 @@ class woToObject(object):
         numberofexcercises = len(rset)
         
         for j in range(numberofexcercises):
-            tk.Label(self.frame, text = rset[j][0]).grid(
+            excercise = rset[j]
+            tk.Label(self.frame, text = excercise[0]).grid(
                         row = 2+j, column=0)
 
             for k in range(numberofsets):
-                tk.Label(self.frame, text = rset[j][1]).grid(
-                        row = 2+j, column=1+k)
+                if ( len(excercise) != 2 ):
+                    tk.Label(self.frame, text = "\n".join(excercise[1:])).grid(
+                            row = 2+j, column=1+k)
+                else:
+                    tk.Label(self.frame, text = excercise[1]).grid(
+                            row = 2+j, column=1+k)
 
         butDone = tk.Button(self.frame, text="Superset Done", 
                 command =  lambda:sequence (
@@ -158,7 +163,7 @@ def main():
     args = parser.parse_args()
 
     root = tk.Tk()
-#     root.title(args.routine)
+    root.title("Workout of the day")
     app = woToObject(args.routine, root)
     start = time.time()
     root.mainloop()
