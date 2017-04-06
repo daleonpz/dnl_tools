@@ -8,8 +8,9 @@
 * create_pyfile.py **(python2.7)**: create python files with sections
 * gmailapi **(python2.7)**: package to send and schedule mails
 * sendfoodlist.py **(python2.7)**: schedule a mail with the food list
-* timer.py **(python2.7)**: timer for general purposes
+* timer.py **(python2.7)**: GUI timer for general purposes
 * todo_list.py **(python2.7)**: interface to manage my to-do list, I am too lazy to use emacs :smiley:
+* wointerface **(python2.7)**: GUI to record my workout routines, when, for how long, and which one I performed. Also it shows on screen the excercises I should do,reps and breaks. Read workout plan from a workout file `*.wo`.
 
 # Projects
 * My parkour blog [On github](https://github.com/daleonpz/daleonpz.github.io) [blog link](https://myparkourjournal.com/)
