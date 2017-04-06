@@ -69,18 +69,21 @@ class woToObject(object):
     def toObject(self):
         self.frame.destroy()
         struct = []
-        l = len(self.superset)
+        self.sslen = str(len(self.superset))
         self.count = 0
-        self.setcount = 0
+        self.ssetcount = 0
         
-        self.repInstance(0, l) 
+        self.repInstance(False) 
             
 
-    def repInstance(self, i, t):
+    def repInstance(self, addSSetCounter):
+        if addSSetCounter: self.ssetcount += 1
+
         self.frame = tk.Frame(self.master) # new frame
         self.frame.grid()
 
-        sets =  re.split("\n\* ",self.superset[i])
+            # sets of this superset
+        sets =  re.split("\n\* ",self.superset[ self.ssetcount ])
         ssrep = re.findall("[0-9:]+", sets[0] ) # superset rep
             #  [ rep , break] , check this part, later ;)
         rset = [ re.split("\n",x) for x in sets[1:] ]# set reps
@@ -88,9 +91,13 @@ class woToObject(object):
 
         numberofsets = int(ssrep[0])
         
-        tk.Label(self.frame , text = "Superset " + str(i+1) + "/" + str(t) ).grid(
-                    row=0, column=0, columnspan=numberofsets  )
+        tk.Label(self.frame , 
+                text = "Superset " + str(self.ssetcount+1) + "/" + self.sslen 
+                ).grid(
+                    row=0, column=0, columnspan=numberofsets  
+                    )
 
+#         ssbreakLabel = Countdown(ssrep[1], self.frame)
         ssbreakLabel = Countdown("00:02", self.frame)
             # possible bug, when ssrep[0] = 0
         ssbreakLabel.label.grid(
@@ -98,7 +105,8 @@ class woToObject(object):
         
         butStart = tk.Button(self.frame, text="Set Break", 
                     command = lambda:sequence( 
-                        ssbreakLabel.start(), self.incrementCounter( numberofsets  ) 
+                        ssbreakLabel.start(), 
+                        self.incrementCounter( numberofsets+1 ) 
                         )  
                     )   
         butStart.grid(row=1, column=0)
@@ -122,7 +130,7 @@ class woToObject(object):
         butDone = tk.Button(self.frame, text="Superset Done", 
                 command =  lambda:sequence (
                    self.destroy_frame(),
-                   self.repInstance( self.setcount, t),
+                   self.repInstance(True),
                     )
                 )
 
@@ -145,7 +153,7 @@ class woToObject(object):
             self.count = 0
             self.setcount += 1
             self.destroy_frame()
-            self.repInstance( self.setcount, len(self.superset) )
+            self.repInstance( False )
     
     def callGOWidget(self):
         self.GO = tk.Button(self.frame)
