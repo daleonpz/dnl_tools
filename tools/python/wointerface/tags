@@ -11,11 +11,11 @@ argparse	wointerface.py	/^import argparse$/;"	i
 callGOWidget	wointerface.py	/^    def callGOWidget(self):$/;"	m	class:woToObject
 destroy_frame	wointerface.py	/^    def destroy_frame(self):$/;"	m	class:woToObject
 getopt	wointerface.py	/^import getopt$/;"	i
-incrementCounter	wointerface.py	/^    def incrementCounter(self, limit, breakLabel):$/;"	m	class:woToObject
+incrementCounter	wointerface.py	/^    def incrementCounter(self, limit):$/;"	m	class:woToObject
 main	wointerface.py	/^def main():$/;"	f
 pygame	wointerface.py	/^import pygame$/;"	i
 re	wointerface.py	/^import re$/;"	i
-repInstance	wointerface.py	/^    def repInstance(self, i, t):$/;"	m	class:woToObject
+repInstance	wointerface.py	/^    def repInstance(self, addSSetCounter):$/;"	m	class:woToObject
 sequence	wointerface.py	/^def sequence(*args):$/;"	f
 start	wointerface.py	/^        def start(self):$/;"	m	class:Countdown
 stop_loop	wointerface.py	/^        def stop_loop(self):$/;"	m	class:Countdown
