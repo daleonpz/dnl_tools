@@ -12,7 +12,7 @@
 * todo_list.py **(python2.7)**: interface to manage my to-do list, I am too lazy to use emacs :smiley:
 * wointerface **(python2.7)**: GUI to record my workout routines, when, for how long, and which one I performed. Also it shows on screen the excercises I should do,reps and breaks. Read workout plan from a workout file `*.wo`.
 
-# Projects
+# Websites
 * My parkour blog [On github](https://github.com/daleonpz/daleonpz.github.io) [blog link](https://myparkourjournal.com/)
 * My developer blog [On github](https://github.com/daleonpz/blog) [blog link](https://daleonpz.com)
 * My parkour company website [On github](https://github.com/innermovement/innermovement.github.io) [website link](https://innermovementproject.com/)
