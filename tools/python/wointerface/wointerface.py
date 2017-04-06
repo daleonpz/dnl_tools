@@ -69,21 +69,24 @@ class woToObject(object):
     def toObject(self):
         self.frame.destroy()
         struct = []
-        self.sslen = str(len(self.superset))
+        self.sslen = len(self.superset)
         self.count = 0
-        self.ssetcount = 0
+        self.ssetcount = 1
         
         self.repInstance(False) 
             
 
     def repInstance(self, addSSetCounter):
         if addSSetCounter: self.ssetcount += 1
+        if self.ssetcount > self.sslen: 
+            self.frame.quit()  
+            return None
 
         self.frame = tk.Frame(self.master) # new frame
         self.frame.grid()
 
             # sets of this superset
-        sets =  re.split("\n\* ",self.superset[ self.ssetcount ])
+        sets =  re.split("\n\* ",self.superset[ self.ssetcount - 1 ])
         ssrep = re.findall("[0-9:]+", sets[0] ) # superset rep
             #  [ rep , break] , check this part, later ;)
         rset = [ re.split("\n",x) for x in sets[1:] ]# set reps
@@ -92,7 +95,7 @@ class woToObject(object):
         numberofsets = int(ssrep[0])
         
         tk.Label(self.frame , 
-                text = "Superset " + str(self.ssetcount+1) + "/" + self.sslen 
+                text = "Superset " + str(self.ssetcount) + "/" + str(self.sslen) 
                 ).grid(
                     row=0, column=0, columnspan=numberofsets  
                     )
@@ -139,9 +142,9 @@ class woToObject(object):
 
     def destroy_frame(self):
         if (self.count != 0):
-            self.setcount += 1
+            self.ssetcount += 1
 
-        if (self.setcount  == len( self.superset) ):
+        if (self.ssetcount  == len( self.superset) ):
             self.frame.quit()
         else:
             self.frame.destroy()
@@ -151,9 +154,8 @@ class woToObject(object):
         self.count+=1
         if (self.count == limit):
             self.count = 0
-            self.setcount += 1
             self.destroy_frame()
-            self.repInstance( False )
+            self.repInstance( True )
     
     def callGOWidget(self):
         self.GO = tk.Button(self.frame)
