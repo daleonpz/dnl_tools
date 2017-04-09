@@ -35,13 +35,17 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] interface to format workouts routines 
 ** Hardware [0/1]
  - [ ] adapt a programmable motor to a tripod to be used for panning 
-** Reading - Technology [3/6]
+** Reading - Technology [3/10]
  - [X] Introduction to Networking - Charles Severance
  - [ ] A Tour of C++ - Bjarne Stroustrup
  - [X] C++ How to Program - Paul Deitel
  - [X] Computer Systems - Randal Bryant
  - [ ] The C programming language - Brian Kernighan
  - [ ] Beginning Linux Programming -Matthew and Stones
+ - [ ] Expert C Programming - Peter van der Linden
+ - [ ] Reversing: Secrets of reverse engineering - Eldad Eilam
+ - [ ] Programming Pearls - Jon Louis
+ - [ ] Making embedded sytems - Elicia White
 ** Reading - Health [3/4]
  - [ ] Patrick McKeown - The Oxygen Advantage
  - [X] Total Knee Health - Martin Koban
