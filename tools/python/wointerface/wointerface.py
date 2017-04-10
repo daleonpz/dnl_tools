@@ -109,30 +109,20 @@ class woToObject(object):
             # possible bug, when ssrep[0] = 0
         ssbreakLabel.label.grid(
                     row=1, column=1, columnspan=numberofsets-1) 
+
+             # rset = [  [ ex , rep, break ]...]
+        numberofexcercises = len(rset)        
         
         butStart = tk.Button(self.frame, text="Set Break", 
                     command = lambda:sequence( 
                         ssbreakLabel.start(), 
-                        self.incrementCounter( numberofsets+1 ) 
+                        self.incrementCounter( numberofsets+1 ),
+                        self.updateLabels(numberofexcercises, numberofsets, rset)
                         )  
                     )   
         butStart.grid(row=1, column=0)
 
-             # rset = [  [ ex , rep, break ]...]
-        numberofexcercises = len(rset)
-        
-        for j in range(numberofexcercises):
-            excercise = rset[j]
-            tk.Label(self.frame, text = excercise[0]).grid(
-                        row = 2+j, column=0)
-
-            for k in range(numberofsets):
-                if ( len(excercise) != 2 ):
-                    tk.Label(self.frame, text = "\n".join(excercise[1:])).grid(
-                            row = 2+j, column=1+k)
-                else:
-                    tk.Label(self.frame, text = excercise[1]).grid(
-                            row = 2+j, column=1+k)
+        self.updateLabels(numberofexcercises, numberofsets, rset)
 
         butDone = tk.Button(self.frame, text="Superset Done", 
                 command =  lambda:sequence (
@@ -157,7 +147,27 @@ class woToObject(object):
             self.count = 0
             self.destroy_frame()
             self.repInstance( True )
-    
+   
+    def updateLabels(self, numberofexcercises, numberofsets, rset):
+            for j in range(numberofexcercises):
+                excercise = rset[j]
+                tk.Label(self.frame, text = excercise[0]).grid(
+                            row = 2+j, column=0)
+     
+                for k in range(numberofsets):
+                    if k == self.count:
+                        bg = "red"
+                    else:
+                        bg = "white"
+
+                    if ( len(excercise) != 2 ):
+                       label = tk.Label(self.frame, text = "\n".join(excercise[1:]))
+                    else:
+                       label = tk.Label(self.frame, text = excercise[1])
+
+                    label.configure(bg=bg)
+                    label.grid( row = 2+j, column=1+k)
+ 
     def callGOWidget(self):
         self.GO = tk.Button(self.frame)
         self.GO["text"] = "GO"
