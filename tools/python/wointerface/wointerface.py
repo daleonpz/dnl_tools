@@ -145,9 +145,6 @@ class woToObject(object):
 
 
     def destroy_frame(self):
-        if (self.count != 0):
-            self.ssetcount += 1
-
         if (self.ssetcount  == len( self.superset) ):
             self.frame.quit()
         else:
