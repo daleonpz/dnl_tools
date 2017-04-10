@@ -4,7 +4,6 @@
 ###############################
 # Add stats
 # Improve GUI
-# bug: last break increase before
 
 ################################
 #   I M P O R T S
