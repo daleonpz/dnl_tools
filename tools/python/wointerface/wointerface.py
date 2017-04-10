@@ -106,8 +106,8 @@ class woToObject(object):
                     row=0, column=0, columnspan=numberofsets  
                     )
 
-#         ssbreakLabel = Countdown(ssrep[1], self.frame)
-        ssbreakLabel = Countdown("00:02", self.frame)
+        ssbreakLabel = Countdown(ssrep[1], self.frame)
+#         ssbreakLabel = Countdown("00:02", self.frame)
             # possible bug, when ssrep[0] = 0
         ssbreakLabel.label.grid(
                     row=1, column=1, columnspan=numberofsets-1) 
