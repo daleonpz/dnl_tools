@@ -98,7 +98,10 @@ class woToObject(object):
         numberofsets = int(ssrep[0])
         
         tk.Label(self.frame , 
-                text = "Superset " + str(self.ssetcount) + "/" + str(self.sslen) 
+                text = " ----------------------------- \n S U P E R S E T   " + 
+                        str(self.ssetcount) + "/" + str(self.sslen) + 
+                        " \n ----------------------------- ",
+                font=('Helvetica',15,"bold")
                 ).grid(
                     row=0, column=0, columnspan=numberofsets  
                     )
@@ -112,7 +115,7 @@ class woToObject(object):
              # rset = [  [ ex , rep, break ]...]
         numberofexcercises = len(rset)        
         
-        butStart = tk.Button(self.frame, text="Set Break", 
+        butStart = tk.Button(self.frame, text="Set Break", font=("fixedsys",10,"bold"), 
                     command = lambda:sequence( 
                         ssbreakLabel.start(), 
                         self.incrementCounter( numberofsets+1 ),
@@ -123,7 +126,8 @@ class woToObject(object):
 
         self.updateLabels(numberofexcercises, numberofsets, rset)
 
-        butDone = tk.Button(self.frame, text="Superset Done", 
+        butDone = tk.Button(self.frame, text="Superset Done", font=("fixedsys",10,"bold"),
+                borderwidth=5,
                 command =  lambda:sequence (
                    self.destroy_frame(),
                    self.repInstance(True),
@@ -150,7 +154,7 @@ class woToObject(object):
     def updateLabels(self, numberofexcercises, numberofsets, rset):
             for j in range(numberofexcercises):
                 excercise = rset[j]
-                tk.Label(self.frame, text = excercise[0]).grid(
+                tk.Label(self.frame, text = excercise[0],font=("fixedsys",15)).grid(
                             row = 2+j, column=0)
      
                 for k in range(numberofsets):
@@ -160,17 +164,21 @@ class woToObject(object):
                         bg = "white"
 
                     if ( len(excercise) != 2 ):
-                       label = tk.Label(self.frame, text = "\n".join(excercise[1:]))
+                       label = tk.Label(self.frame, text = "\n".join(excercise[1:]),
+                               font=("fixedsys",15) )
                     else:
-                       label = tk.Label(self.frame, text = excercise[1])
+                       label = tk.Label(self.frame, text = excercise[1], 
+                           font=("fixedsys",15) )
 
                     label.configure(bg=bg)
-                    label.grid( row = 2+j, column=1+k)
+                    label.grid( row = 2+j, column=1+k, padx=5, pady=4)
  
     def callGOWidget(self):
         self.GO = tk.Button(self.frame)
         self.GO["text"] = "GO"
         self.GO["command"] =  self.toObject
+        self.GO["font"] = ("fixedsys",50,"bold")
+        self.GO["borderwidth"] = 10
         self.GO.grid(row=0, column=0, padx=20)
 
 ################################
@@ -184,6 +192,7 @@ def main():
 
     root = tk.Tk()
     root.title("Workout of the day")
+#     root.geometry("400x250")
     app = woToObject(args.routine, root)
     start = time.time()
     root.mainloop()
