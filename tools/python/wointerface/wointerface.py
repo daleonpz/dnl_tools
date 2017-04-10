@@ -4,6 +4,7 @@
 ###############################
 # Add stats
 # Improve GUI
+# bug: last break increase before
 
 ################################
 #   I M P O R T S
@@ -63,7 +64,8 @@ class woToObject(object):
         rawtext = infile.read()
         infile.close()
         self.superset = re.split("\n\n",rawtext)
-
+        self.superset = [x for x in self.superset if x not in ('\n','')]
+    
         self.frame = tk.Frame(master)
         self.frame.grid()
         self.callGOWidget()
