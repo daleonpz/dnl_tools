@@ -4,6 +4,7 @@
 ###############################
 # Add stats
 # Improve GUI
+# Bug: last break it doesn't refresh
 
 ################################
 #   I M P O R T S
