@@ -44,7 +44,7 @@ class PDFScraper(object):
                 if chunk: # filter out keep-alive new chunks
                     f.write(chunk)
                     #f.flush() commented by recommendation from J.F.Sebastian
-#         return local_filename
+        return fullpath
 
 
 ################################
