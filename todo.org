@@ -42,7 +42,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] Computer Systems - Randal Bryant
  - [X] The C programming language - Brian Kernighan
  - [ ] Beginning Linux Programming -Matthew and Stones
- - [ ] Expert C Programming - Peter van der Linden
+ - [X] Expert C Programming - Peter van der Linden
  - [ ] Reversing: Secrets of reverse engineering - Eldad Eilam
  - [ ] Programming Pearls - Jon Louis
  - [ ] Making embedded sytems - Elicia White
