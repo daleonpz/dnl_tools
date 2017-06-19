@@ -14,6 +14,8 @@ struct vplayer{
         int height;
         int width;
         int bitsperpixels;
+        int fps;
+        char *file;
         SDL_Overlay *bmp;
         SDL_Surface     *screen;
         SDL_Rect rect;
