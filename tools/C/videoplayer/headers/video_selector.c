@@ -1,7 +1,6 @@
 #include "video_selector.h"
 
-int vplayer_init(struct vplayer *vPlayer) {
-    
+void vplayer_init(struct vplayer *vPlayer){
     vPlayer->height = 360;
     vPlayer->width  = 640;
     vPlayer->bitsperpixels = 24;
@@ -9,12 +8,10 @@ int vplayer_init(struct vplayer *vPlayer) {
     vPlayer->rect.y = 0;
     vPlayer->rect.w = vPlayer->width;//pCodecCtx->width;
     vPlayer->rect.h = vPlayer->height;//pCodecCtx->height; 
-    
-    //SDL_Overlay     *bmp;
-//    SDL_Surface     *screen;
-    //SDL_Rect        rect;
-//     SDL_Event       event;
-    
+ }
+
+int vplayer_start(struct vplayer *vPlayer) {
+   
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER)) {
         fprintf(stderr, "Could not initialize SDL - %s\n", SDL_GetError());
         return -1;
@@ -126,21 +123,21 @@ int play_video(char *file,  struct vplayer *vPlayer ) {
       
    
 
-    // Read frames and save first five frames to disk
     i=0;
-    while( av_read_frame(pFormatCtx, &packet) >= 0) {
+    int closeWindows = 0;
+    while( (av_read_frame(pFormatCtx, &packet) >= 0) && !closeWindows  ) {
     // Is this a packet from the video stream?
         if( packet.stream_index == videoStream) {
             avcodec_decode_video2(pCodecCtx, pFrame, &frameFinished, &packet);
       
            // Did we get a video frame?
             if(frameFinished) {
-	        SDL_LockYUVOverlay(vPlayer->bmp);
+                SDL_LockYUVOverlay(vPlayer->bmp);
 
                 AVPicture pict;
-	        pict.data[0] = vPlayer->bmp->pixels[0];
-	        pict.data[1] = vPlayer->bmp->pixels[2];
-	        pict.data[2] = vPlayer->bmp->pixels[1];
+                pict.data[0] = vPlayer->bmp->pixels[0];
+                pict.data[1] = vPlayer->bmp->pixels[2];
+                pict.data[2] = vPlayer->bmp->pixels[1];
 
                 pict.linesize[0] = vPlayer->bmp->pitches[0];
                 pict.linesize[1] = vPlayer->bmp->pitches[2];
@@ -154,7 +151,6 @@ int play_video(char *file,  struct vplayer *vPlayer ) {
 
                 SDL_UnlockYUVOverlay(vPlayer->bmp);
                
-                //SDL_DisplayYUVOverlay(vPlayer->bmp, &(vPlayer->rect));
                 SDL_DisplayYUVOverlay(vPlayer->bmp, &(vPlayer->rect));
  
               }
@@ -162,8 +158,15 @@ int play_video(char *file,  struct vplayer *vPlayer ) {
     
         // Free the packet that was allocated by av_read_frame
         av_free_packet(&packet);
-         }
+        SDL_PollEvent(&(vPlayer->event));
+        if ( (vPlayer->event.type) ==  SDL_QUIT){
+                  closeWindows = 1;
+                  SDL_Quit();
+                  vplayer_init( vPlayer)   ;
+        }            
+    }
   
+
     // Free the YUV frame
     av_frame_free(&pFrame);
   

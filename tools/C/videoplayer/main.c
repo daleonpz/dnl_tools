@@ -3,7 +3,6 @@
 
 /* ------------------------------------------- */
 /*   TODO                                   
-      - be able to close the sdl windows
       - after watching ask whether you would like to delete or keep the file
  */
 /* ------------------------------------------- */
@@ -50,6 +49,7 @@ int main( int argc, char **argv){
     // TODO: post about passing arg by value, trolling my pointer
     parse_input(argc, argv, &vPlayer);
     vplayer_init(&vPlayer);
+    vplayer_start(&vPlayer);
 
     struct dirent **eps;
     int n;
@@ -57,16 +57,13 @@ int main( int argc, char **argv){
     n = scandir (vPlayer.file, &eps, file_select, alphasort);
     if (n >= 0) {
       int cnt;
-//       size_t pathlen = strlen(vPlayer.file);
       char *fullpath = (char *)malloc(MAX_FILE_LENGTH);
 
       for (cnt = 0; cnt < n; ++cnt){
-//               char *fullpath = malloc(pathlen + strlen(eps[cnt]->d_name) + 2);
-              sprintf(fullpath,"%s%s", vPlayer.file, eps[cnt]->d_name);
-              puts(fullpath);
-              play_video(fullpath, &vPlayer);
-//               free(fullpath);
-      }
+            sprintf(fullpath,"%s%s", vPlayer.file, eps[cnt]->d_name);
+            puts(fullpath);
+            play_video(fullpath, &vPlayer);
+        }
       free(fullpath);
     }
     else    

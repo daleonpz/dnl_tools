@@ -22,6 +22,7 @@ struct vplayer{
         SDL_Event event;
     };
 
+void vplayer_start(struct vplayer *vPlayer);
 int vplayer_init(struct vplayer *vPlayer);
 int vplayer_quit(struct vplayer *vPlayer);
 
