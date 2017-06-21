@@ -1,11 +1,22 @@
 #include "headers/parser.h"
 #include "headers/video_selector.h"
 
+/* ------------------------------------------- */
+/*   TODO                                   
+      - be able to close the sdl windows
+      - after watching ask whether you would like to delete or keep the file
+ */
+/* ------------------------------------------- */
+
+
+
 #include <sys/types.h>
 #include <dirent.h>
 
 #define FALSE 0
 #define TRUE !FALSE
+
+#define MAX_FILE_LENGTH 100
 
 static int valid_format(char *file){
     char *ptr;
@@ -30,7 +41,6 @@ static int file_select(struct dirent *entry){
 	 return FALSE;
 
     return ( valid_format(entry->d_name) );
-     
 }
 
 int main( int argc, char **argv){
@@ -39,44 +49,33 @@ int main( int argc, char **argv){
 
     // TODO: post about passing arg by value, trolling my pointer
     parse_input(argc, argv, &vPlayer);
-    printf("Input file/folder %s\n", vPlayer.file); 
+    vplayer_init(&vPlayer);
 
-    /*
-    DIR *dp;
-    struct dirent *ep;
-    
-    dp = opendir (vPlayer.file);
-    if (dp != NULL) {
-        while (ep = readdir (dp)){
-            if (ep->d_type == DT_REG)
-                puts (ep->d_name);
-        }
-        (void) closedir (dp);
-    }
-    else
-        perror ("Couldn't open the directory");
-*/
     struct dirent **eps;
     int n;
 
-    puts("************");
     n = scandir (vPlayer.file, &eps, file_select, alphasort);
     if (n >= 0) {
       int cnt;
-      for (cnt = 0; cnt < n; ++cnt)
-              puts (eps[cnt]->d_name);
+//       size_t pathlen = strlen(vPlayer.file);
+      char *fullpath = (char *)malloc(MAX_FILE_LENGTH);
+
+      for (cnt = 0; cnt < n; ++cnt){
+//               char *fullpath = malloc(pathlen + strlen(eps[cnt]->d_name) + 2);
+              sprintf(fullpath,"%s%s", vPlayer.file, eps[cnt]->d_name);
+              puts(fullpath);
+              play_video(fullpath, &vPlayer);
+//               free(fullpath);
+      }
+      free(fullpath);
     }
     else    
-        if ( valid_format(vPlayer.file ) )
+        if ( valid_format(vPlayer.file ) ){
                 puts(vPlayer.file);
+                play_video(vPlayer.file, &vPlayer);
+        }       
         else
             fprintf(stderr,"No valid file format or couldn't open the directory\n");
 
-/*
-    vplayer_init(&vPlayer);
-
-    play_video(argv[1], &vPlayer);
-
     vplayer_quit(&vPlayer);
-*/
 }
