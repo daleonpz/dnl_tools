@@ -3,7 +3,7 @@
 
 /* ------------------------------------------- */
 /*   TODO                                   
-        BUG: if the file doesn't exist , it doesnt print an error
+        BUG: when close windows it doesn't reset
  */
 /* ------------------------------------------- */
 
@@ -14,25 +14,22 @@
 #include <string.h>
 #include <ctype.h>
 
-#define FALSE 0
-#define TRUE !FALSE
-
 #define MAX_FILE_LENGTH 100
 #define MAX_YES_NO_LENGHT 5
 
 static int valid_format(char *file){
     char *ptr;
-    ptr = rindex(file, '.');
-    if ((ptr != NULL) &&
-             ((strcmp(ptr, ".MOV") == 0) ||
+     ptr = rindex(file, '.');
+     if ((ptr != NULL) &&
+                 ((strcmp(ptr, ".MOV") == 0) ||
              (strcmp(ptr, ".mp4") == 0) ||
              (strcmp(ptr, ".MP4") == 0) || 
              (strcmp(ptr, ".mpeg") == 0) ||
              (strcmp(ptr, ".avi") ==0  ))
        )
-	 return (TRUE);
-    else
-	 return(FALSE);
+         return 1;
+     else 
+        return 0;
 }
 
 static int file_select(struct dirent *entry){
@@ -40,7 +37,7 @@ static int file_select(struct dirent *entry){
     if ((strcmp(entry->d_name, ".")== 0) ||
             (strcmp(entry->d_name, "..") == 0)
             )
-	 return FALSE;
+	 return 0;
 
     return ( valid_format(entry->d_name) );
 }
@@ -58,7 +55,7 @@ static int keepvid(char *filename){
             while( *p != '\0') {*p = (char) tolower(*p); p++;}
 
             if (( strncmp(yn,"n",1) == 0) || ( strncmp(yn,"no",2) == 0)){
-//                 remove(filename);
+                remove(filename);
                 printf("file deleted \n");
                 break;
             }
@@ -84,8 +81,7 @@ int main( int argc, char **argv){
     // TODO: post about passing arg by value, trolling my pointer
     parse_input(argc, argv, &vPlayer);
     vplayer_init(&vPlayer);
-    vplayer_start(&vPlayer);
-
+    
     struct dirent **eps;
     int n;
 
@@ -93,6 +89,7 @@ int main( int argc, char **argv){
     if (n >= 0) {
       int cnt;
       char *fullpath = (char *)malloc(MAX_FILE_LENGTH);
+      vplayer_start(&vPlayer);
 
       for (cnt = 0; cnt < n; ++cnt){
             sprintf(fullpath,"%s%s", vPlayer.file, eps[cnt]->d_name);
@@ -103,13 +100,14 @@ int main( int argc, char **argv){
       free(fullpath);
     }
     else    
-        if ( valid_format(vPlayer.file ) ){
+    if ( ( access( vPlayer.file, F_OK) == 0 ) && valid_format(vPlayer.file ) ){
+                vplayer_start(&vPlayer);
                 puts(vPlayer.file);
                 play_video(vPlayer.file, &vPlayer);
                 keepvid(vPlayer.file);
         }       
         else
-            fprintf(stderr,"No valid file format or couldn't open the directory\n");
+            fprintf(stderr,"No valid video file format or couldn't open the directory\n");
 
     vplayer_quit(&vPlayer);
 }
