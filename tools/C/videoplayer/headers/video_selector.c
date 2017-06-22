@@ -38,7 +38,6 @@ int vplayer_start(struct vplayer *vPlayer) {
 }
 
 int vplayer_quit(struct vplayer *vPlayer){
-//      SDL_PollEvent(&event);
     SDL_PollEvent(&(vPlayer->event));
     switch(vPlayer->event.type) {
         case SDL_QUIT:
