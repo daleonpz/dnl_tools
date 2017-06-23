@@ -2,9 +2,9 @@
 #include "headers/video_selector.h"
 
 /* ------------------------------------------- */
-/*   TODO                                   
-        BUG: when close windows it doesn't reset
- */
+/*  
+    TODO                                   
+*/
 /* ------------------------------------------- */
 
 
@@ -89,7 +89,6 @@ int main( int argc, char **argv){
     if (n >= 0) {
       int cnt;
       char *fullpath = (char *)malloc(MAX_FILE_LENGTH);
-      vplayer_start(&vPlayer);
 
       for (cnt = 0; cnt < n; ++cnt){
             sprintf(fullpath,"%s%s", vPlayer.file, eps[cnt]->d_name);
@@ -99,15 +98,16 @@ int main( int argc, char **argv){
         }
       free(fullpath);
     }
-    else    
-    if ( ( access( vPlayer.file, F_OK) == 0 ) && valid_format(vPlayer.file ) ){
-                vplayer_start(&vPlayer);
+    else if ( ( access( vPlayer.file, F_OK) == 0 ) && valid_format(vPlayer.file ) ){
                 puts(vPlayer.file);
                 play_video(vPlayer.file, &vPlayer);
                 keepvid(vPlayer.file);
         }       
-        else
-            fprintf(stderr,"No valid video file format or couldn't open the directory\n");
+    else{
+        fprintf(stderr,"No valid video file format or couldn't open the directory\n");
+        return -1;
+    }
 
-    vplayer_quit(&vPlayer);
+    return 0;
+
 }

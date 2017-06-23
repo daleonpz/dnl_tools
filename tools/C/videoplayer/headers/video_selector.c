@@ -10,7 +10,7 @@ void vplayer_init(struct vplayer *vPlayer){
     vPlayer->rect.h = vPlayer->height;//pCodecCtx->height; 
  }
 
-int vplayer_start(struct vplayer *vPlayer) {
+static int vplayer_start(struct vplayer *vPlayer) {
    
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER)) {
         fprintf(stderr, "Could not initialize SDL - %s\n", SDL_GetError());
@@ -37,12 +37,12 @@ int vplayer_start(struct vplayer *vPlayer) {
 
 }
 
-int vplayer_quit(struct vplayer *vPlayer){
+static int vplayer_eventManager(struct vplayer *vPlayer){
     SDL_PollEvent(&(vPlayer->event));
     switch(vPlayer->event.type) {
         case SDL_QUIT:
               SDL_Quit();
-              return 0;
+              return 1;
               break;
         default:
               break;
@@ -50,10 +50,12 @@ int vplayer_quit(struct vplayer *vPlayer){
     return 0;
 }
 
-
+static int vplayer_quit(struct vplayer *vPlayer){
+    SDL_Quit();
+}
 
 int play_video(char *file,  struct vplayer *vPlayer ) {
-
+        
     AVFormatContext *pFormatCtx = NULL;
     AVCodecContext  *pCodecCtxOrig = NULL;
     AVCodecContext  *pCodecCtx = NULL;
@@ -121,8 +123,8 @@ int play_video(char *file,  struct vplayer *vPlayer ) {
             );
       
    
-
-    i=0;
+    vplayer_start(vPlayer);
+    i = 0;
     int closeWindows = 0;
     while( (av_read_frame(pFormatCtx, &packet) >= 0) && !closeWindows  ) {
     // Is this a packet from the video stream?
@@ -149,7 +151,6 @@ int play_video(char *file,  struct vplayer *vPlayer ) {
                       );
 
                 SDL_UnlockYUVOverlay(vPlayer->bmp);
-               
                 SDL_DisplayYUVOverlay(vPlayer->bmp, &(vPlayer->rect));
  
               }
@@ -157,14 +158,10 @@ int play_video(char *file,  struct vplayer *vPlayer ) {
     
         // Free the packet that was allocated by av_read_frame
         av_free_packet(&packet);
-        SDL_PollEvent(&(vPlayer->event));
-        if ( (vPlayer->event.type) ==  SDL_QUIT){
-                  closeWindows = 1;
-                  SDL_Quit();
-                  vplayer_init( vPlayer)   ;
-        }            
+        closeWindows =  vplayer_eventManager(vPlayer) ;
     }
-  
+
+    if ( !closeWindows )   vplayer_quit(vPlayer); 
 
     // Free the YUV frame
     av_frame_free(&pFrame);

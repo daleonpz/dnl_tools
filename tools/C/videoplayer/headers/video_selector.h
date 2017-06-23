@@ -23,8 +23,9 @@ struct vplayer{
     };
 
 void vplayer_init(struct vplayer *vPlayer);
-int vplayer_start(struct vplayer *vPlayer);
-int vplayer_quit(struct vplayer *vPlayer);
+static int vplayer_start(struct vplayer *vPlayer);
+static int vplayer_eventManager(struct vplayer *vPlayer);
+static int vplayer_quit(struct vplayer *vPlayer);
 
 int play_video(char *file, struct vplayer *vPlayer);
 
