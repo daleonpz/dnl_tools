@@ -16,4 +16,5 @@ clean:
 	rm -rf *~
 	rm -rf *.o
 	rm main
+	rm headers/*.gch
 
