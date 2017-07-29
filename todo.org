@@ -1,15 +1,6 @@
 * ToDo
 I am about to finish some of them, other task I don't even start but I will soon.
 
-** Blog [8/8]
- - [X] Background picture
- - [X] Logo
- - [X] Custom url
- - [X] change to https
- - [X] First post
- - [X] Delete photography
- - [X] Finish draft
- - [X] New Post
 ** Videos [4/5]
  - [X] Asia - EU travel
  - [X] Promo video IM - classes 2017
@@ -35,7 +26,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] interface to format workouts routines 
 ** Hardware [0/1]
  - [ ] adapt a programmable motor to a tripod to be used for panning 
-** Reading - Technology [4/10]
+** Reading - Technology [5/10]
  - [X] Introduction to Networking - Charles Severance
  - [ ] A Tour of C++ - Bjarne Stroustrup
  - [X] C++ How to Program - Paul Deitel
@@ -45,7 +36,7 @@ I am about to finish some of them, other task I don't even start but I will soon
  - [X] Expert C Programming - Peter van der Linden
  - [ ] Reversing: Secrets of reverse engineering - Eldad Eilam
  - [ ] Programming Pearls - Jon Louis
- - [ ] Making embedded sytems - Elicia White
+ - [X] Making embedded sytems - Elicia White
 ** Reading - Health [3/4]
  - [ ] Patrick McKeown - The Oxygen Advantage
  - [X] Total Knee Health - Martin Koban
