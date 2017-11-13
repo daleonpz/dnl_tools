@@ -25,7 +25,7 @@
 # Fun
 * shell_stats.py **(python2.7)**: stats of the type of commands executed in terminal
 * when `main` is not a function **(C)**: hack `main` using something similar to a buffer overflow [blog post](https://daleonpz.com/blog/hack-main) [code](https://github.com/daleonpz/blog/tree/master/_code/posts/hack-main)
-* hackers.org game: I've been playing for awhile [solutions](https://github.com/daleonpz/misc/tree/master/onlineGames/hacker.org)
+* hacker.org game: I've been playing for awhile [solutions](https://github.com/daleonpz/misc/tree/master/onlineGames/hacker.org)
 
 Feel free to send me a PR or a message :blush:
 
