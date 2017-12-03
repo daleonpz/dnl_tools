@@ -5,6 +5,7 @@
 # Tools
 * imdatabase **(cpp)**: postgres interface to manage my own database. [On github](https://github.com/daleonpz/imdatabase)
 * break_reminder.sh **(bash)**: show a timer on the screen 
+* check_spelling **(bash)**: script based on aspell to check and replace misspellings of a block of lines in a text file
 * create_pyfile.py **(python2.7)**: create python files with sections
 * gmailapi **(python2.7)**: package to send and schedule mails
 * sendfoodlist.py **(python2.7)**: schedule a mail with the food list
@@ -21,7 +22,6 @@
 # Supports 
 * exec_break.sh **(bash)**: execute the break reminder using cron
 * newpyfile **(bash)**: make executable the file created by create_pyfile.py
-* check_spelling **(bash)**: script based on aspell to check and replace misspellings of a block of lines in a text file
 
 # Fun
 * shell_stats.py **(python2.7)**: stats of the type of commands executed in terminal
