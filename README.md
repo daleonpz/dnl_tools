@@ -21,6 +21,7 @@
 # Supports 
 * exec_break.sh **(bash)**: execute the break reminder using cron
 * newpyfile **(bash)**: make executable the file created by create_pyfile.py
+* check_spelling **(bash)**: script based on aspell to check and replace misspellings of a block of lines in a text file
 
 # Fun
 * shell_stats.py **(python2.7)**: stats of the type of commands executed in terminal
