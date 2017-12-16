@@ -41,7 +41,7 @@ if [ -e __TMP_FILE__.bak ]; then
     if [ "$M" == "$" ]; then
         cat __TMP_FILE__ >> $FILE
     else
-        sed -i $N" e cat tmp" $FILE
+        sed -i $N" e cat __TMP_FILE__" $FILE
     fi
 
     # Delete extras
