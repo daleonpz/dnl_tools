@@ -19,6 +19,10 @@
 * My developer blog [On github](https://github.com/daleonpz/blog) [blog link](https://daleonpz.com)
 * My parkour company website [On github](https://github.com/innermovement/innermovement.github.io) [website link](https://innermovementproject.com/)
 
+# Embedded Related 
+* Obstacle avoiding and tower finding robot based on STM32F0 **(C - freeRTOS)** [On github](https://github.com/eselabr2d2/ESM_lab_project)
+* Check server availability through WiFi based on ESP32 **(C - freeRTOS)** [On github](https://github.com/daleonpz/misc/tree/master/C/ESP32_server_availability)
+
 # Supports 
 * exec_break.sh **(bash)**: execute the break reminder using cron
 * newpyfile **(bash)**: make executable the file created by create_pyfile.py
