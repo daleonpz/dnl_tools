@@ -28,7 +28,8 @@ function countdown(){
 	IFS=:
 	set -- $*
 	#secs=$(( ${1#0} * 60 + ${2#0} ))
-	secs=600 # 10minutes
+	# secs=300 # 5minutes
+        secs=$1
         while [ $secs -gt 0 ]
 	do
 		sleep 1 &
