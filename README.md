@@ -22,6 +22,8 @@
 # Embedded Related 
 * Obstacle avoiding and tower finding robot based on STM32F0 **(C - freeRTOS)** [On github](https://github.com/eselabr2d2/ESM_lab_project)
 * Check server availability through WiFi based on ESP32 **(C - freeRTOS)** [On github](https://github.com/daleonpz/misc/tree/master/C/ESP32_server_availability)
+* SPI communication **(VHDL)** [On github](https://github.com/daleonpz/misc/tree/master/vhdl/serial_comm) 
+
 
 # Supports 
 * exec_break.sh **(bash)**: execute the break reminder using cron
