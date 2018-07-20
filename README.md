@@ -1,6 +1,7 @@
 ---
- - Tools I made for personal usage and learning purposes
- - Everything I am doing or I will do is on my To-do list
+    - Projects 
+    - Tools I made for personal usage and learning purposes
+    - Everything I am doing or I will do is on my To-do list
 ---
 # Embedded Related 
 * Obstacle avoiding and tower finding robot based on STM32F0 **(C - freeRTOS)** [On github](https://github.com/eselabr2d2/ESM_lab_project)
