@@ -2,6 +2,11 @@
  - Tools I made for personal usage and learning purposes
  - Everything I am doing or I will do is on my To-do list
 ---
+# Embedded Related 
+* Obstacle avoiding and tower finding robot based on STM32F0 **(C - freeRTOS)** [On github](https://github.com/eselabr2d2/ESM_lab_project)
+* Check server availability through WiFi based on ESP32 **(C - freeRTOS)** [On github](https://github.com/daleonpz/misc/tree/master/C/ESP32_server_availability)
+* SPI communication **(VHDL)** [On github](https://github.com/daleonpz/misc/tree/master/vhdl/serial_comm) 
+
 # Tools
 * imdatabase **(cpp)**: postgres interface to manage my own database. [On github](https://github.com/daleonpz/imdatabase)
 * break_reminder.sh **(bash)**: show a timer on the screen 
@@ -18,11 +23,6 @@
 * My parkour blog [On github](https://github.com/daleonpz/daleonpz.github.io) [blog link](https://myparkourjournal.com/) 
 * My developer blog [On github](https://github.com/daleonpz/blog) [blog link](https://daleonpz.com)
 * My parkour company website [On github](https://github.com/innermovement/innermovement.github.io) [website link](https://innermovementproject.com/)
-
-# Embedded Related 
-* Obstacle avoiding and tower finding robot based on STM32F0 **(C - freeRTOS)** [On github](https://github.com/eselabr2d2/ESM_lab_project)
-* Check server availability through WiFi based on ESP32 **(C - freeRTOS)** [On github](https://github.com/daleonpz/misc/tree/master/C/ESP32_server_availability)
-* SPI communication **(VHDL)** [On github](https://github.com/daleonpz/misc/tree/master/vhdl/serial_comm) 
 
 
 # Supports 
