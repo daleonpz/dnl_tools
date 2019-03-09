@@ -9,4 +9,7 @@
 
 - Blog: http://www.hexblog.com/
 
-
+---
+# keyboard
+- http://blog.komar.be/how-to-make-a-keyboard-the-matrix/ 
+- https://medium.com/@monkeytypewritr/building-your-own-keyboard-from-scratch-bd0638c40850
