@@ -1,0 +1,9 @@
+#!/bin/bash
+# Check if grep input is provided
+if [ -z "$1" ]; then
+      echo "Usage: cgrep <pattern> [options] <files/directories>"
+        exit 1
+fi
+
+# Run grep with line numbers and print results with a prefix number
+grep -n "$@" | awk -v OFS='\t' '{print NR, $0}'
