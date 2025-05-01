@@ -33,13 +33,13 @@ def set_brightness(value):
         pass
 
 def blink_screen():
-    """Blink screen 3 times by adjusting brightness."""
+    """Blink screen 2 times by adjusting brightness."""
     original_brightness = get_current_brightness()
-    for _ in range(3):
+    for _ in range(2):
         set_brightness(original_brightness * 0.5)  # Dim to 50%
-        time.sleep(0.3)
+        time.sleep(0.1)
         set_brightness(original_brightness)  # Restore
-        time.sleep(0.3)
+        time.sleep(0.1)
 
 def start_blinking():
     """Start the blinking daemon."""
@@ -61,8 +61,7 @@ def start_blinking():
     try:
         while True:
             blink_screen()
-#             time.sleep(15 * 60)  # Wait 15 minutes
-            time.sleep(15)
+            time.sleep(60)  # Wait 1 minute
     except KeyboardInterrupt:
         pass
     finally:
